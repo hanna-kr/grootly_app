@@ -40,21 +40,23 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Body'),
+            Text('Test'),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          selectedItemColor: Color.fromRGBO(255, 242, 230, 1),
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.cookie), label: 'Recipes'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.energy_savings_leaf), label: 'Tips')
-          ]),
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Color.fromRGBO(255, 242, 230, 1),
+        unselectedItemColor: Color.fromRGBO(0, 60, 46, 1),
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.cookie), label: 'Recipes'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.energy_savings_leaf), label: 'Tips')
+        ],
+      ),
     );
   }
 }
