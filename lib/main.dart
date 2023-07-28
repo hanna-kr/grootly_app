@@ -25,45 +25,36 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('Grootly'),
-        leading: Icon(Icons.list_alt),
-        actions: [
+        title: const Center(
+          child: Text(
+            'Grootly',
+          ),
+        ),
+        leading: const Icon(Icons.list_alt),
+        actions: const [
           Icon(Icons.person),
+          Padding(padding: EdgeInsets.all(8))
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            ListTile(
-              title: Text('Option 1'),
-              onTap: () {
-                // Code, der beim Klicken von Option 1 ausgeführt wird
-              },
-            ),
-            ListTile(
-              title: Text('Option 2'),
-              onTap: () {
-                // Code, der beim Klicken von Option 2 ausgeführt wird
-              },
-            ),
+            Text('Body'),
           ],
         ),
       ),
-      body: Center(
-        child: Text('Body'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Code, der beim Klicken des FloatingActionButton ausgeführt wird
-        },
-        child: Icon(Icons.shopping_basket_sharp),
-      ),
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Color.fromRGBO(255, 242, 230, 1),
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(icon: Icon(Icons.cookie), label: 'Recipes'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.energy_savings_leaf), label: 'Tips')
+          ]),
     );
   }
 }
