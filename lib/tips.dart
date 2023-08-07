@@ -8,7 +8,7 @@ class TipsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text(
+        title: const Text(
           'Tipps',
         ),
         centerTitle: true,
