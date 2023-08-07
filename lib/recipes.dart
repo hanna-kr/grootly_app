@@ -8,15 +8,14 @@ class RecipePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text(
+        title: const Text(
           'Rezepte',
         ),
+        centerTitle: true,
         leading: const Icon(Icons.arrow_back),
         actions: const [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.favorite),
-          ),
+          Icon(Icons.favorite),
+          Padding(padding: EdgeInsets.all(8))
         ],
       ),
     );
