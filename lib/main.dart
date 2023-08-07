@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:grootly_app/grootly_icons_icons.dart';
+import 'package:grootly_app/home.dart';
+import 'package:grootly_app/profile.dart';
+import 'package:grootly_app/recipes.dart';
+import 'package:grootly_app/search.dart';
+import 'package:grootly_app/settings.dart';
+import 'package:grootly_app/tips.dart';
 
 void main() {
   runApp(const GrootlyApp());
@@ -17,95 +23,46 @@ class GrootlyApp extends StatelessWidget {
         primaryColor: const Color(0xFF008868),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      initialRoute: '/home',
+      routes: {
+        '/recipes': (context) => const RecipePage(),
+        '/search': (context) => const SearchPage(),
+        '/tips': (context) => const TipsPage(),
+        '/profile': (context) => const ProfilePage(),
+        '/settings': (context) => const SettingsPage()
+      },
+      home: const MyHomePage(),
     );
   }
 }
 
-class Recipe {
-  String recipeName;
-  int recipeTime;
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
-  Recipe({required this.recipeName, required this.recipeTime});
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class MyHomePage extends StatelessWidget {
-  final placeholder = const SizedBox(
-    height: 24,
-  );
-
-  final placeholder2 = const SizedBox(
-    height: 8,
-  );
-
-  final List<Recipe> recipes = [
-    Recipe(recipeName: 'Brown Baguette', recipeTime: 30),
-    Recipe(recipeName: 'Brown Baguette', recipeTime: 30),
-    Recipe(recipeName: 'Brown Baguette', recipeTime: 30),
-    Recipe(recipeName: 'Brown Baguette', recipeTime: 30),
-    Recipe(recipeName: 'Brown Baguette', recipeTime: 30),
+class _MyHomePageState extends State<MyHomePage> {
+  List<Widget> screens = [
+    const HomePage(),
+    const SearchPage(),
+    const RecipePage(),
+    const TipsPage()
   ];
 
-  MyHomePage({super.key});
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Center(
-          child: Text(
-            'Grootly',
-          ),
-        ),
-        leading: const Icon(Icons.list_alt),
-        actions: const [
-          Icon(Icons.person),
-          Padding(padding: EdgeInsets.all(8))
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Card(
-              child: Column(
-                children: [
-                  Image.network(
-                      'https://media.istockphoto.com/id/1170328725/photo/close-up-of-various-food-in-airtight-jars.jpg?s=612x612&w=0&k=20&c=u5tUqbQPbcZ5zvMuRWrLv4VRxRpEBc8zbZpVh5TCqSk='),
-                  const ListTile(
-                    title: Text('5 easy ways to store food'),
-                    subtitle: Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.'),
-                    trailing: Icon((Icons.favorite_outline)),
-                  ),
-                ],
-              ),
-            ),
-            placeholder,
-            Text(
-              'Trending',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-            placeholder2,
-            Expanded(
-              child: ListView.builder(
-                itemCount: recipes.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: ListTile(
-                      leading: Image.network(
-                          'https://images.unsplash.com/photo-1599819055803-717bba43890f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'),
-                      title: Text('${recipes[index].recipeName}'),
-                      subtitle: Text('${recipes[index].recipeTime} min'),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         selectedItemColor: const Color.fromRGBO(255, 242, 230, 1),
@@ -118,18 +75,12 @@ class MyHomePage extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(GrootlyIcons.search2), label: 'Search'),
           BottomNavigationBarItem(
-              icon: Icon(
-                GrootlyIcons.chefshat2,
-                size: 24,
-              ),
-              label: 'Recipes'),
+              icon: Icon(GrootlyIcons.chefshat2), label: 'Recipes'),
           BottomNavigationBarItem(
-              icon: Icon(
-                GrootlyIcons.sustainablehand,
-                size: 24,
-              ),
-              label: 'Tips')
+              icon: Icon(GrootlyIcons.sustainablehand), label: 'Tips')
         ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
