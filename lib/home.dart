@@ -129,6 +129,38 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
+            placeholder,
+            const Text(
+              'Trending',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            placeholder2,
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: recipes.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    width: 150,
+                    child: Card(
+                      child: Column(
+                        children: [
+                          recipes[index].recipeImage,
+                          ListTile(
+                            title: Text(recipes[index].recipeName),
+                            subtitle: Text('${recipes[index].recipeTime} min'),
+                            trailing: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.favorite_outline)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
