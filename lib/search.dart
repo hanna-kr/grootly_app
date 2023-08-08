@@ -17,8 +17,8 @@ class SearchPage extends StatelessWidget {
           },
         ),
       ),
-      body: SearchBar(
-        leading: const Icon(Icons.search),
+      body: const SearchBar(
+        leading: Icon(Icons.search),
         hintText: 'Search text ...',
       ),
     );
