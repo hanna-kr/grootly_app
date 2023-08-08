@@ -12,7 +12,12 @@ class RecipePage extends StatelessWidget {
           'Rezepte',
         ),
         centerTitle: true,
-        leading: const Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.popAndPushNamed(context, '/home');
+          },
+        ),
         actions: const [
           Icon(Icons.favorite),
           Padding(padding: EdgeInsets.all(8))

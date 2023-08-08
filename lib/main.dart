@@ -25,25 +25,26 @@ class GrootlyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
+        '/home': (context) => const MyApp(),
         '/recipes': (context) => const RecipePage(),
         '/search': (context) => const SearchPage(),
         '/tips': (context) => const TipsPage(),
         '/profile': (context) => const ProfilePage(),
         '/settings': (context) => const SettingsPage()
       },
-      home: const MyHomePage(),
+      //home: const MyApp(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyApp> createState() => _MyAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyAppState extends State<MyApp> {
   List<Widget> screens = [
     const HomePage(),
     const SearchPage(),
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -68,6 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedItemColor: const Color.fromRGBO(255, 242, 230, 1),
         unselectedItemColor: const Color.fromRGBO(0, 60, 46, 1),
         iconSize: 24,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -80,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(GrootlyIcons.sustainablehand), label: 'Tips')
         ],
         currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        onTap: onItemTapped,
       ),
     );
   }
