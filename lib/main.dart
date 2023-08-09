@@ -5,6 +5,7 @@ import 'package:grootly_app/profile.dart';
 import 'package:grootly_app/recipes.dart';
 import 'package:grootly_app/search.dart';
 import 'package:grootly_app/settings.dart';
+import 'package:grootly_app/settings_languages.dart';
 import 'package:grootly_app/tips.dart';
 
 void main() {
@@ -30,7 +31,8 @@ class GrootlyApp extends StatelessWidget {
         '/search': (context) => const SearchPage(),
         '/tips': (context) => const TipsPage(),
         '/profile': (context) => const ProfilePage(),
-        '/settings': (context) => const SettingsPage()
+        '/settings': (context) => const SettingsPage(),
+        '/languages': (context) => const LanguagePage()
       },
       //home: const MyApp(),
     );

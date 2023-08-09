@@ -73,95 +73,164 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            placeholder2,
-            Card(
-              child: Column(
-                children: [
-                  Image.network(
-                    'https://media.istockphoto.com/id/1170328725/photo/close-up-of-various-food-in-airtight-jars.jpg?s=612x612&w=0&k=20&c=u5tUqbQPbcZ5zvMuRWrLv4VRxRpEBc8zbZpVh5TCqSk=',
-                    height: 200,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                  ListTile(
-                    title: const Text('Lebenmittel richtig lagern'),
-                    subtitle: const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.',
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              placeholder2,
+              Card(
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://media.istockphoto.com/id/1170328725/photo/close-up-of-various-food-in-airtight-jars.jpg?s=612x612&w=0&k=20&c=u5tUqbQPbcZ5zvMuRWrLv4VRxRpEBc8zbZpVh5TCqSk=',
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
-                    trailing: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite_outline)),
-                  ),
-                ],
-              ),
-            ),
-            placeholder,
-            const Text(
-              'Trending',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-            placeholder2,
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: recipes.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    width: 150,
-                    child: Card(
-                      child: Column(
-                        children: [
-                          recipes[index].recipeImage,
-                          ListTile(
-                            title: Text(recipes[index].recipeName),
-                            subtitle: Text('${recipes[index].recipeTime} min'),
-                            trailing: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.favorite_outline)),
-                          ),
-                        ],
+                    ListTile(
+                      title: const Text(
+                        'Lebenmittel richtig lagern',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            placeholder,
-            const Text(
-              'Trending',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-            placeholder2,
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: recipes.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    width: 150,
-                    child: Card(
-                      child: Column(
-                        children: [
-                          recipes[index].recipeImage,
-                          ListTile(
-                            title: Text(recipes[index].recipeName),
-                            subtitle: Text('${recipes[index].recipeTime} min'),
-                            trailing: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.favorite_outline)),
-                          ),
-                        ],
+                      subtitle: const Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.',
+                        style: TextStyle(color: Colors.grey),
                       ),
+                      trailing: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.favorite_outline)),
                     ),
-                  );
-                },
+                  ],
+                ),
               ),
-            ),
-          ],
+              placeholder,
+              const Text(
+                'Zuletzt angesehen',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              placeholder2,
+              SizedBox(
+                height: 180,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: recipes.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                        width: 160,
+                        child: Card(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            recipes[index].recipeImage,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start, // Ausrichtung der Widgets nach links
+                                    children: [
+                                      Text(
+                                        recipes[index].recipeName,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        '${recipes[index].recipeTime} min',
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Flexible(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                                Icons.favorite_outline),
+                                            alignment: Alignment.bottomRight),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        )));
+                  },
+                ),
+              ),
+              placeholder,
+              const Text(
+                'Aktuelles',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              placeholder2,
+              SizedBox(
+                height: 180,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: recipes.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                        width: 160,
+                        child: Card(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            recipes[index].recipeImage,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start, // Ausrichtung der Widgets nach links
+                                    children: [
+                                      Text(
+                                        recipes[index].recipeName,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        '${recipes[index].recipeTime} min',
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Flexible(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                                Icons.favorite_outline),
+                                            alignment: Alignment.bottomRight),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        )));
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

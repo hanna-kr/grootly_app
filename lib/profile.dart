@@ -21,19 +21,19 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 80,
               backgroundColor: Colors.orangeAccent,
             ),
-            SizedBox(
+            const SizedBox(
               height: 120,
             ),
-            Text('Name:'),
-            Padding(
+            const Text('Name:'),
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
@@ -41,11 +41,11 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Text('Alter:'),
-            Padding(
+            const Text('Alter:'),
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
@@ -53,6 +53,23 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pop<String>(context);
+                },
+                style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                  Color.fromRGBO(179, 224, 213, 1),
+                )),
+                child: const Text(
+                  'speichern',
+                  style: TextStyle(
+                      color: Color.fromRGBO(0, 45, 34, 1),
+                      fontWeight: FontWeight.w500),
+                )),
           ],
         ),
       ),
