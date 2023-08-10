@@ -36,13 +36,13 @@
 import 'package:flutter/material.dart';
 
 class BigImageCard extends StatelessWidget {
-  final String imageUrl;
+  final String image;
   final String title;
   final String subtitle;
 
   const BigImageCard({
     super.key,
-    required this.imageUrl,
+    required this.image,
     required this.title,
     required this.subtitle,
   });
@@ -52,8 +52,8 @@ class BigImageCard extends StatelessWidget {
     return Card(
       child: Column(
         children: [
-          Image.network(
-            imageUrl,
+          Image.asset(
+            image,
             height: 220,
             width: double.infinity,
             fit: BoxFit.cover,
