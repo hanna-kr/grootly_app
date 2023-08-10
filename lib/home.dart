@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
               const BigImageCard(
                   imageUrl:
                       'https://media.istockphoto.com/id/1170328725/photo/close-up-of-various-food-in-airtight-jars.jpg?s=612x612&w=0&k=20&c=u5tUqbQPbcZ5zvMuRWrLv4VRxRpEBc8zbZpVh5TCqSk=',
-                  title: 'Lebenmittel richtig lagern',
+                  title: 'Lebensmittel richtig lagern',
                   subtitle:
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.'),
               placeholder,
