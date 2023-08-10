@@ -100,7 +100,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               onTap: () {
-                Navigator.popAndPushNamed(context, '/home');
+                Navigator.popUntil(
+                    context, (route) => route.settings.name == '/home');
               },
             ),
           ],

@@ -32,28 +32,28 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 120,
             ),
-            const Text('Name:'),
+            const Text('Vorname:'),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Name',
-                ),
+                    labelText: 'Vorname',
+                    hintText: 'Hier kannst du deinen Vorname ändern'),
               ),
             ),
             const SizedBox(
               height: 30,
             ),
-            const Text('Alter:'),
+            const Text('Familienname:'),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Alter',
-                ),
+                    labelText: 'Nachname',
+                    hintText: 'Hier kannst du deinen Familiennamen ändern'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(

@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
-
-class Recipe {
-  String recipeName;
-  int recipeTime;
-  Image recipeImage;
-
-  Recipe(
-      {required this.recipeName,
-      required this.recipeTime,
-      required this.recipeImage});
-}
+import 'package:grootly_app/image_card_big.dart';
+import 'package:grootly_app/recipe_card_small.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     height: 8,
   );
 
-  final List<Recipe> recipes = [
+  final List<Recipe> recipesNew = [
     Recipe(
         recipeName: 'Baguette',
         recipeTime: 30,
@@ -74,161 +65,32 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               placeholder2,
-              Card(
-                child: Column(
-                  children: [
-                    Image.network(
+              const BigImageCard(
+                  imageUrl:
                       'https://media.istockphoto.com/id/1170328725/photo/close-up-of-various-food-in-airtight-jars.jpg?s=612x612&w=0&k=20&c=u5tUqbQPbcZ5zvMuRWrLv4VRxRpEBc8zbZpVh5TCqSk=',
-                      height: 200,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                    ListTile(
-                      title: const Text(
-                        'Lebenmittel richtig lagern',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: const Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.',
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      trailing: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.favorite_outline)),
-                    ),
-                  ],
-                ),
-              ),
+                  title: 'Lebenmittel richtig lagern',
+                  subtitle:
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.'),
               placeholder,
               const Text(
                 'Zuletzt angesehen',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               placeholder2,
-              SizedBox(
-                height: 180,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: recipes.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                        width: 160,
-                        child: Card(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            recipes[index].recipeImage,
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start, // Ausrichtung der Widgets nach links
-                                    children: [
-                                      Text(
-                                        recipes[index].recipeName,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        '${recipes[index].recipeTime} min',
-                                        style: const TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Flexible(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                                Icons.favorite_outline),
-                                            alignment: Alignment.bottomRight),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        )));
-                  },
-                ),
-              ),
+              RecipeCardSmall(recipes: recipesNew),
               placeholder,
               const Text(
                 'Aktuelles',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               placeholder2,
-              SizedBox(
-                height: 180,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: recipes.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                        width: 160,
-                        child: Card(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            recipes[index].recipeImage,
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start, // Ausrichtung der Widgets nach links
-                                    children: [
-                                      Text(
-                                        recipes[index].recipeName,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        '${recipes[index].recipeTime} min',
-                                        style: const TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Flexible(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                                Icons.favorite_outline),
-                                            alignment: Alignment.bottomRight),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        )));
-                  },
-                ),
-              ),
+              RecipeCardSmall(recipes: recipesNew),
             ],
           ),
         ),
