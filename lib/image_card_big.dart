@@ -69,7 +69,10 @@ class BigImageCard extends StatelessWidget {
             ),
             trailing: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.favorite_outline),
+              icon: const Icon(
+                Icons.favorite_outline,
+                color: Colors.black,
+              ),
             ),
           ),
         ],

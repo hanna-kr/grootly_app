@@ -90,14 +90,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: const Color.fromRGBO(179, 224, 213, 1),
                     borderRadius: BorderRadiusDirectional.circular(20)),
                 child: const Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text(
-                    'back to home',
-                    style: TextStyle(
-                        color: Color.fromRGBO(0, 45, 34, 1),
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
+                    padding: EdgeInsets.all(12.0), child: Icon(Icons.home)),
               ),
               onTap: () {
                 Navigator.popUntil(
