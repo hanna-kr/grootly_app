@@ -63,9 +63,12 @@ class BigImageCard extends StatelessWidget {
               title,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(
-              subtitle,
-              style: const TextStyle(color: Colors.grey),
+            subtitle: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 3),
+              child: Text(
+                subtitle,
+                style: const TextStyle(color: Colors.grey),
+              ),
             ),
             trailing: IconButton(
               onPressed: () {},
