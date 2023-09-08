@@ -35,22 +35,8 @@ class _SettingsPageState extends State<SettingsPage> {
             const SizedBox(
               height: 20,
             ),
-            GestureDetector(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: const Color.fromRGBO(179, 224, 213, 1),
-                    borderRadius: BorderRadiusDirectional.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Text(
-                    selectedLanguage ? 'Deutsch' : 'Englisch',
-                    style: const TextStyle(
-                        color: Color.fromRGBO(0, 45, 34, 1),
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
-              onTap: () async {
+            ElevatedButton(
+              onPressed: () async {
                 final userAnswer =
                     await Navigator.pushNamed(context, '/languages') as bool?;
 
@@ -61,6 +47,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   });
                 }
               },
+              style: ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                Theme.of(context).primaryColor.withOpacity(0.8),
+              )),
+              child: Text(
+                selectedLanguage ? 'Deutsch' : 'Englisch',
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -74,29 +67,29 @@ class _SettingsPageState extends State<SettingsPage> {
             const SizedBox(
               height: 20,
             ),
-            const Divider(
-              height: 20,
-              thickness: 5,
+            Divider(
+              height: 16,
+              thickness: 1,
               indent: 20,
               endIndent: 20,
-              color: Color.fromRGBO(255, 211, 171, 1),
+              color: Theme.of(context).primaryColor,
             ),
             const SizedBox(
               height: 20,
             ),
-            GestureDetector(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: const Color.fromRGBO(179, 224, 213, 1),
-                    borderRadius: BorderRadiusDirectional.circular(20)),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.popUntil(
+                      context, (route) => route.settings.name == '/');
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                  Theme.of(context).primaryColor.withOpacity(0.8),
+                )),
                 child: const Padding(
-                    padding: EdgeInsets.all(12.0), child: Icon(Icons.home)),
-              ),
-              onTap: () {
-                Navigator.popUntil(
-                    context, (route) => route.settings.name == '/home');
-              },
-            ),
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: Icon(Icons.home),
+                ))
           ],
         ),
       ),

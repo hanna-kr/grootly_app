@@ -25,15 +25,12 @@ class LanguagePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop<bool>(context, true);
                   },
-                  style: const ButtonStyle(
+                  style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                    Color.fromRGBO(179, 224, 213, 1),
+                    Theme.of(context).primaryColor.withOpacity(0.6),
                   )),
                   child: const Text(
                     'Deutsch',
-                    style: TextStyle(
-                        color: Color.fromRGBO(0, 45, 34, 1),
-                        fontWeight: FontWeight.w500),
                   )),
               const SizedBox(
                 width: 20,
@@ -42,16 +39,11 @@ class LanguagePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop<bool>(context, false);
                   },
-                  style: const ButtonStyle(
+                  style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                    Color.fromRGBO(179, 224, 213, 1),
+                    Theme.of(context).primaryColor.withOpacity(0.6),
                   )),
-                  child: const Text(
-                    'Englisch',
-                    style: TextStyle(
-                        color: Color.fromRGBO(0, 45, 34, 1),
-                        fontWeight: FontWeight.w500),
-                  )),
+                  child: const Text('Englisch')),
             ],
           ),
         ],

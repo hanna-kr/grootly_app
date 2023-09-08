@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grootly_app/image_card_big.dart';
-import 'package:grootly_app/recipe_card_small.dart';
+import 'package:grootly_app/Components/image_card_big.dart';
+import 'package:grootly_app/Components/recipe_card_small.dart';
+import 'package:grootly_app/Styles/spacing.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,14 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final placeholder = const SizedBox(
-    height: 24,
-  );
-
-  final placeholder2 = const SizedBox(
-    height: 8,
-  );
-
   final List<Recipe> recipesNew = [
     Recipe(
       recipeName: 'Baguette',
@@ -69,25 +62,25 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              placeholder2,
+              SpacingH.kSpacing8,
               const BigImageCard(
                   image: 'assets/images/example/foodstorage.jpg',
                   title: 'Lebensmittel richtig lagern',
                   subtitle:
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.'),
-              placeholder,
+              SpacingH.kSpacing16,
               const Text(
                 'Zuletzt angesehen',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              placeholder2,
+              SpacingH.kSpacing8,
               RecipeCardSmall(recipes: recipesNew),
-              placeholder,
+              SpacingH.kSpacing16,
               const Text(
                 'Aktuelles',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              placeholder2,
+              SpacingH.kSpacing8,
               RecipeCardSmall(recipes: recipesNew),
             ],
           ),
