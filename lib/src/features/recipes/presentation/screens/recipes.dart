@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grootly_app/src/core/Theme/color_theme.dart';
 
 class RecipePage extends StatelessWidget {
   const RecipePage({super.key});
@@ -7,7 +8,7 @@ class RecipePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: grootlyTheme.primaryColor,
         title: const Text(
           'Rezepte',
         ),

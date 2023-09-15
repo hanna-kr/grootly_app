@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData grootlyColorTheme = ThemeData(
-  primaryColor: const Color(0xFF008868),
+ThemeData grootlyTheme = ThemeData(
+  primaryColor: Color.fromARGB(255, 8, 93, 80),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );

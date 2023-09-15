@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grootly_app/Components/image_card_big.dart';
-import 'package:grootly_app/Components/recipe_card_small.dart';
-import 'package:grootly_app/Styles/spacing.dart';
+import 'package:grootly_app/src/core/presentation/widgets/image_card_big.dart';
+import 'package:grootly_app/src/features/recipes/presentation/widgets/recipe_card_small.dart';
+import 'package:grootly_app/src/core/Theme/color_theme.dart';
+import 'package:grootly_app/src/styles/spacing.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: grootlyTheme.primaryColor,
         title: const Text(
           'Home',
         ),

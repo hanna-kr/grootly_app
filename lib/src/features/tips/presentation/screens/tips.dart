@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:grootly_app/src/core/Theme/color_theme.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+class TipsPage extends StatelessWidget {
+  const TipsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Text('Suche'),
+        backgroundColor: grootlyTheme.primaryColor,
+        title: const Text(
+          'Tipps',
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -16,10 +19,10 @@ class SearchPage extends StatelessWidget {
             Navigator.popAndPushNamed(context, '/home');
           },
         ),
-      ),
-      body: const SearchBar(
-        leading: Icon(Icons.search),
-        hintText: 'Search text ...',
+        actions: const [
+          Icon(Icons.favorite),
+          Padding(padding: EdgeInsets.all(8))
+        ],
       ),
     );
   }
