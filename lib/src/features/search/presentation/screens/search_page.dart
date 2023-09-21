@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:grootly_app/src/core/Theme/color_theme.dart';
+import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: grootlyTheme.primaryColor,
+        backgroundColor: GrootlyColor.primary,
         title: const Text('Suche'),
         centerTitle: true,
         leading: IconButton(

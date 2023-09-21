@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../Theme/color_theme.dart';
+import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
+import 'package:grootly_app/src/core/presentation/styles/icons/grootly_icons_icons.dart';
 
 class BottomMenu extends StatelessWidget {
   final int selectedIndex;
@@ -15,19 +15,23 @@ class BottomMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: grootlyTheme.primaryColor,
-      selectedItemColor: const Color.fromRGBO(255, 242, 230, 1),
-      unselectedItemColor:
-          const Color.fromRGBO(255, 242, 230, 1).withOpacity(0.4),
-      iconSize: 24,
+      backgroundColor: GrootlyColor.primary,
+      selectedItemColor: GrootlyColor.offWhite,
+      unselectedItemColor: GrootlyColor.offWhite.withOpacity(0.4),
+      iconSize: 30,
+      selectedFontSize: 14,
+      unselectedFontSize: 12,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        BottomNavigationBarItem(icon: Icon(Icons.cookie), label: 'Recipes'),
-        BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Tips')
+        BottomNavigationBarItem(icon: Icon(GrootlyIcons.home), label: 'Home'),
+        BottomNavigationBarItem(
+            icon: Icon(GrootlyIcons.search), label: 'Search'),
+        BottomNavigationBarItem(
+            icon: Icon(GrootlyIcons.chefshat), label: 'Recipes'),
+        BottomNavigationBarItem(
+            icon: Icon(GrootlyIcons.sustainablehand), label: 'Tips')
       ],
       currentIndex: selectedIndex,
       onTap: onClicked,

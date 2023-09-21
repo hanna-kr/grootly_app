@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grootly_app/src/core/Theme/color_theme.dart';
+import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 
 class TipsPage extends StatelessWidget {
   const TipsPage({super.key});
@@ -8,7 +8,7 @@ class TipsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: grootlyTheme.primaryColor,
+        backgroundColor: GrootlyColor.primary,
         title: const Text(
           'Tipps',
         ),

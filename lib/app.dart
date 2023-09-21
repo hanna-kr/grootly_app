@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/home/home.dart';
 import 'package:grootly_app/src/core/presentation/navigation/bottom_nav_page.dart';
 import 'package:grootly_app/src/core/presentation/splash_screen.dart';
-import 'package:grootly_app/src/core/Theme/color_theme.dart';
 import 'package:grootly_app/src/features/profile/presentation/screens/profile_page.dart';
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipes.dart';
 import 'package:grootly_app/src/features/search/presentation/screens/search_page.dart';
@@ -18,7 +17,6 @@ class GrootlyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Grootly App',
-      theme: grootlyTheme,
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),

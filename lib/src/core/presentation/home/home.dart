@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 import 'package:grootly_app/src/core/presentation/widgets/image_card_big.dart';
 import 'package:grootly_app/src/features/recipes/presentation/widgets/recipe_card_small.dart';
-import 'package:grootly_app/src/core/Theme/color_theme.dart';
-import 'package:grootly_app/src/styles/spacing.dart';
+
+import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: grootlyTheme.primaryColor,
+        backgroundColor: GrootlyColor.primary,
         title: const Text(
           'Home',
         ),
@@ -63,25 +64,25 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SpacingH.kSpacing8,
+              SpacingH.s,
               const BigImageCard(
                   image: 'assets/images/example/foodstorage.jpg',
                   title: 'Lebensmittel richtig lagern',
                   subtitle:
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.'),
-              SpacingH.kSpacing16,
+              SpacingH.m,
               const Text(
                 'Zuletzt angesehen',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              SpacingH.kSpacing8,
+              SpacingH.s,
               RecipeCardSmall(recipes: recipesNew),
-              SpacingH.kSpacing16,
+              SpacingH.m,
               const Text(
                 'Aktuelles',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              SpacingH.kSpacing8,
+              SpacingH.s,
               RecipeCardSmall(recipes: recipesNew),
             ],
           ),
