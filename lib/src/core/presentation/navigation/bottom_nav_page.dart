@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grootly_app/src/core/presentation/navigation/bottom_navigation.dart';
-import 'package:grootly_app/src/core/presentation/home/home.dart';
+import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
+import 'package:grootly_app/src/core/presentation/styles/icons/grootly_icons_icons.dart';
+import 'package:grootly_app/src/features/home/presentation/home.dart';
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipes.dart';
 import 'package:grootly_app/src/features/search/presentation/screens/search_page.dart';
 import 'package:grootly_app/src/features/tips/presentation/screens/tips.dart';
@@ -13,13 +14,6 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-  List<Widget> screens = [
-    const HomePage(),
-    const SearchPage(),
-    const RecipePage(),
-    const TipsPage()
-  ];
-
   int _selectedIndex = 0;
 
   void onItemTapped(int index) {
@@ -30,9 +24,37 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> screens = [
+      const HomePage(),
+      const RecipePage(),
+      const TipsPage(),
+      const SearchPage(),
+    ];
+
     return Scaffold(
-        body: screens[_selectedIndex],
-        bottomNavigationBar:
-            BottomMenu(selectedIndex: _selectedIndex, onClicked: onItemTapped));
+      body: screens[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: GrootlyColor.primary,
+        selectedItemColor: GrootlyColor.white,
+        unselectedItemColor: GrootlyColor.white.withOpacity(0.7),
+        iconSize: 30,
+        selectedFontSize: 14,
+        unselectedFontSize: 12,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(GrootlyIcons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(GrootlyIcons.food), label: 'Rezepte'),
+          BottomNavigationBarItem(
+              icon: Icon(GrootlyIcons.sustainablehand), label: 'Tipps'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.star_border_outlined), label: 'Favouriten'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: onItemTapped,
+      ),
+    );
   }
 }

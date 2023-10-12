@@ -18,6 +18,10 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   lottie: ^2.6.0
+  image_picker: ^1.0.4
+  firebase_core: ^2.17.0
+  firebase_analytics: ^10.5.1
+  firebase_auth: ^4.10.1
 
 dev_dependencies:
   flutter_test:
@@ -34,8 +38,15 @@ flutter:
   assets:
     - assets/json/Frame-1.json
     - assets/images/example/
- 
+    - assets/images/logo/
+
   fonts:
     - family: GrootlyIcons
       fonts:
         - asset: assets/icons/GrootlyIcons.ttf
+    
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf

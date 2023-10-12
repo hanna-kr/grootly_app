@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1085165901528",
+    "project_id": "grootly-app",
+    "storage_bucket": "grootly-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085165901528:android:698151ecd52d6a973929ad",
+        "android_client_info": {
+          "package_name": "com.example.grootly_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIJPYcNBgEFyO8ILeiAWHUMkrFy1MZAW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

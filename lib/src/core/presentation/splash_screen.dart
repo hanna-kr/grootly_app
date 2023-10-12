@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/bottom_nav');
+                  Navigator.pushNamed(context, '/bottom_nav_page');
                 },
                 child: SizedBox(
                     height: 250,
