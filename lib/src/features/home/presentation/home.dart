@@ -1,14 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
 import 'package:grootly_app/src/core/presentation/widgets/image_card_big.dart';
-import 'package:grootly_app/src/features/recipes/presentation/screens/recipes.dart';
 import 'package:grootly_app/src/features/recipes/presentation/widgets/recipe_card_small.dart';
-
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
-import 'package:grootly_app/src/features/search/presentation/screens/search_page.dart';
-import 'package:grootly_app/src/features/tips/presentation/screens/tips.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,20 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> screens = [
-    const HomePage(),
-    const SearchPage(),
-    const RecipePage(),
-    const TipsPage()
-  ];
-
-  int _selectedIndex = 0;
-
-  void onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final List<Recipe> recipesNew = [
     Recipe(
@@ -67,7 +51,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,

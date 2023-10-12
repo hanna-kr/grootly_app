@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
@@ -17,10 +19,21 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+
   String avatarImagePath = '';
 
-  void setAvatarImagePath(imagePath) {
-    avatarImagePath = imagePath ?? "";
+  void setAvatarImagePath(String? imagePath) {
+    setState(() {
+      avatarImagePath = imagePath ?? '';
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    emailController.text = _auth.currentUser!.email ?? '';
   }
 
   @override
@@ -51,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     CustomImagePicker(setImage: setAvatarImagePath),
                     SpacingH.l,
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -83,6 +96,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           labelText: 'E-mail',
                           hintText: 'Ändere hier deine E-mail',
                         ),
+                        TextField(
+                          controller: emailController,
+                        )
                       ],
                     ),
                     SpacingH.l,

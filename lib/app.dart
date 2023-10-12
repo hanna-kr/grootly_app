@@ -26,7 +26,8 @@ class GrootlyApp extends StatelessWidget {
       // darkTheme: ThemeData.dark(useMaterial3: true),
       initialRoute: '/',
       routes: {
-        '/': (context) => const SignUpPage(),
+        '/': (context) => const LoginPage(),
+        '/sign_up': (context) => const SignUpPage(),
         '/bottom_nav_page': (context) => const BottomNavPage(),
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),

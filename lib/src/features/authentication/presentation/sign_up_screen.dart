@@ -1,10 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:grootly_app/src/core/presentation/navigation/bottom_nav_page.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 import 'package:grootly_app/src/core/presentation/widgets/primary_button.dart';
 import 'package:grootly_app/src/core/presentation/widgets/secondary_button.dart';
+import 'package:grootly_app/src/features/profile/application/auth_service.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -14,13 +15,19 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   String email = '';
   String password = '';
+
+  Future<String?> registerUser() async {
+    final message = await AuthService().registration(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    return message;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,32 +40,52 @@ class _SignUpPageState extends State<SignUpPage> {
           slivers: [
             SliverFillRemaining(
               hasScrollBody: false,
-              child: Form(
-                key: _formkey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                        height: 200,
-                        width: 200,
-                        child:
-                            Image.asset('assets/images/logo/grootlylogo.png')),
-                    Column(
-                      children: [
-                        TextFormField(
-                            // controller: _emailController,
-                            // keyboardType: TextInputType.emailAddress,
-                            // decoration: kTextfieldDeco,
-                            ),
-                        SpacingH.l,
-                        TextFormField(),
-                      ],
-                    ),
-                    PrimaryButton(text: 'Jetzt registrieren', onPressed: () {}),
-                    Divider(),
-                    SecondaryButton(text: 'Login mit Google', onPressed: () {})
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Image.asset('assets/images/logo/grootlylogo.png')),
+                  Column(
+                    children: [
+                      TextField(
+                        controller: _emailController,
+                        decoration: const InputDecoration(
+                            labelText: 'Email',
+                            hintText: 'Email',
+                            border: OutlineInputBorder()),
+                      ),
+                      SpacingH.l,
+                      TextField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                            labelText: 'Passwort',
+                            hintText: 'Passwort',
+                            border: OutlineInputBorder()),
+                      ),
+                    ],
+                  ),
+                  PrimaryButton(
+                    text: 'Jetzt registrieren',
+                    onPressed: () async {
+                      final message = await registerUser();
+                      if (message!.contains('Success')) {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const BottomNavPage()));
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(message),
+                        ),
+                      );
+                    },
+                  ),
+                  const Divider(
+                    height: 1,
+                  ),
+                  SecondaryButton(text: 'Login mit Google', onPressed: () {})
+                ],
               ),
             ),
           ],
