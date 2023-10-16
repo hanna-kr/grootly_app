@@ -9,6 +9,8 @@ class SecondaryButton extends StatefulWidget {
   final IconData? icon;
   final Function()? onPressed;
   final bool hasIcon;
+  final Image? image;
+  final bool hasImage;
 
   const SecondaryButton({
     super.key,
@@ -16,6 +18,8 @@ class SecondaryButton extends StatefulWidget {
     required this.onPressed,
     this.icon,
     this.hasIcon = true,
+    this.image,
+    this.hasImage = true,
   });
 
   @override
@@ -48,16 +52,25 @@ class _SecondaryButtonState extends State<SecondaryButton> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         if (widget.hasIcon && widget.icon != null)
-                          Padding(
-                            padding: PaddingHor.m,
-                            child: Icon(
-                              widget.icon,
-                              size: 24,
-                              color: GrootlyColor.darkgreenText,
-                            ),
+                          Row(
+                            children: [
+                              Icon(
+                                widget.icon,
+                                size: 24,
+                                color: GrootlyColor.darkgreenText,
+                              ),
+                            ],
                           ),
-                        if (widget.hasIcon || widget.icon == null)
-                          const SizedBox(width: 8),
+                        if (widget.hasImage || widget.image != null)
+                          Row(
+                            children: [
+                              SizedBox(
+                                  width: 24, height: 24, child: widget.image),
+                              const SizedBox(
+                                width: 8,
+                              )
+                            ],
+                          ),
                         Text(
                           widget.text,
                           style: GrootlyTextStyle.buttonSecond,

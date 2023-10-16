@@ -6,11 +6,11 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(
         title: 'Suche',
       ),
-      body: const SearchBar(
+      body: SearchBar(
         leading: Icon(Icons.search),
         hintText: 'Search text ...',
       ),

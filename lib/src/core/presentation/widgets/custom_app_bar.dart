@@ -25,6 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       elevation: 0,
       backgroundColor: GrootlyColor.white,
+      centerTitle: true,
       leading: (leadingIcon != null || onLeadingPressed != null)
           ? Padding(
               padding: const EdgeInsets.all(8.0),

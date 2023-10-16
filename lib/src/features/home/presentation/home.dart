@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
@@ -15,8 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
   final List<Recipe> recipesNew = [
     Recipe(
       recipeName: 'Baguette',
@@ -50,41 +47,36 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, '/profile');
         },
       ),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: SingleChildScrollView(
-              padding: PaddingAll.l,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const BigImageCard(
-                    image: 'assets/images/example/foodstorage.jpg',
-                    title: 'Lebensmittel richtig lagern',
-                    subtitle:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.',
-                  ),
-                  SpacingH.m,
-                  const Text(
-                    'Zuletzt angesehen',
-                    style: GrootlyTextStyle.headlineB3,
-                  ),
-                  SpacingH.s,
-                  RecipeCardSmall(recipes: recipesNew),
-                  SpacingH.m,
-                  const Text(
-                    'Aktuelles',
-                    style: GrootlyTextStyle.headlineB3,
-                  ),
-                  SpacingH.s,
-                  RecipeCardSmall(recipes: recipesNew),
-                ],
-              ),
+      body: SingleChildScrollView(
+        padding: PaddingAll.l,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SearchBar(),
+            SpacingH.m,
+            const BigImageCard(
+              image: 'assets/images/example/foodstorage.jpg',
+              title: 'Lebensmittel richtig lagern',
+              subtitle:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus tellus arcu sit nibh consectetur.',
             ),
-          ),
-        ],
+            SpacingH.m,
+            const Text(
+              'Zuletzt angesehen',
+              style: GrootlyTextStyle.headlineB3,
+            ),
+            SpacingH.s,
+            RecipeCardSmall(recipes: recipesNew),
+            SpacingH.m,
+            const Text(
+              'Aktuelles',
+              style: GrootlyTextStyle.headlineB3,
+            ),
+            SpacingH.s,
+            RecipeCardSmall(recipes: recipesNew),
+          ],
+        ),
       ),
     );
   }

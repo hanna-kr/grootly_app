@@ -23,14 +23,25 @@ dependencies:
   firebase_analytics: ^10.5.1
   firebase_auth: ^4.10.1
   cloud_firestore: ^4.9.3
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.3
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
   flutter_lints: ^2.0.0
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: 'assets/icon_launcher/grootly_launcher.png'
+
+flutter_native_splash:
+  color: "#f5f5f5"
+  image: assets/images/logo/grootlylogo.png
+  android: true
+  ios: true
 
 flutter:
 
@@ -38,6 +49,7 @@ flutter:
 
   assets:
     - assets/json/Frame-1.json
+    - assets/json/grootly_logo.json
     - assets/images/example/
     - assets/images/logo/
 

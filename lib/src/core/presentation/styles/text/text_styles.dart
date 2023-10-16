@@ -120,6 +120,14 @@ class GrootlyTextStyle {
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w500);
 
+  static const TextStyle buttonTert = TextStyle(
+      height: 1.375,
+      fontSize: 16,
+      color: GrootlyColor.limegreen,
+      decoration: TextDecoration.underline,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500);
+
   // Textfield Text
   static const TextStyle textfield = TextStyle(
       height: 1.4286,

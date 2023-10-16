@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
                 child: SizedBox(
                     height: 250,
                     width: 250,
-                    child: Lottie.asset('assets/json/Frame-1.json')),
+                    child: Lottie.asset('assets/json/grootly_logo.json')),
               ),
             ],
           ),

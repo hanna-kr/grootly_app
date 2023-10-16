@@ -35,7 +35,7 @@ class AuthService {
       );
       return 'Success';
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (e.email == 'user-not-found') {
         return 'No user found for that email.';
       } else if (e.code == 'wrong-password') {
         return 'Wrong password provided for that user.';
@@ -45,5 +45,9 @@ class AuthService {
     } catch (e) {
       return e.toString();
     }
+  }
+
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
   }
 }
