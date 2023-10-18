@@ -18,13 +18,17 @@ class _CustomImagePickerState extends State<CustomImagePicker> {
   String? imagePath;
 
   void selectImage() async {
-    XFile? tempFilePath =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    String? tempImagePath = tempFilePath?.path;
-    setState(() {
-      imagePath = tempImagePath;
-    });
-    widget.setImage(imagePath);
+    try {
+      XFile? tempFilePath =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      String? tempImagePath = tempFilePath?.path;
+      setState(() {
+        imagePath = tempImagePath;
+      });
+      widget.setImage(imagePath);
+    } catch (error) {
+      debugPrint('Error selecting image: $error');
+    }
   }
 
   @override

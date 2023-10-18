@@ -27,6 +27,7 @@ dependencies:
   flutter_native_splash: ^2.3.3
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

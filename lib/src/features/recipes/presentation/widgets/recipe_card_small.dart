@@ -36,8 +36,7 @@ class RecipeCardSmall extends StatelessWidget {
                     child: Row(
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment
-                              .start, // Ausrichtung der Widgets nach links
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               recipes[index].recipeName,
