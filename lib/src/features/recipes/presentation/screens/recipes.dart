@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
+import 'package:grootly_app/src/features/recipes/application/recipe_service.dart';
 import 'package:grootly_app/src/features/recipes/domain/recipe_model.dart';
 
 class RecipePage extends StatefulWidget {
@@ -12,21 +12,7 @@ class RecipePage extends StatefulWidget {
 }
 
 class _RecipePageState extends State<RecipePage> {
-  final CollectionReference recipesCollection =
-      FirebaseFirestore.instance.collection('recipes');
-
-  Future<List<RecipeModel>> getAllRecipes() async {
-    QuerySnapshot snapshot = await recipesCollection.get();
-    if (snapshot.docs.isNotEmpty) {
-      List<RecipeModel> recipes = [];
-      for (QueryDocumentSnapshot doc in snapshot.docs) {
-        recipes.add(RecipeModel.fromSnapshot(doc));
-      }
-      return recipes;
-    } else {
-      throw Exception('No recipes found');
-    }
-  }
+  final RecipeService recipeService = RecipeService();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +22,7 @@ class _RecipePageState extends State<RecipePage> {
         title: 'Rezepte',
       ),
       body: FutureBuilder<List<RecipeModel>>(
-        future: getAllRecipes(),
+        future: recipeService.getAllRecipes(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -56,7 +42,7 @@ class _RecipePageState extends State<RecipePage> {
                 RecipeModel recipe = recipes[index];
                 return Card(
                   child: ListTile(
-                    leading: Text(recipe.difficulty),
+                    leading: Image.network(recipe.imgURL),
                     title: Text(recipe.title),
                     subtitle: Text(recipe.category),
                   ),

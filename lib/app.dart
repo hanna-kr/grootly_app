@@ -21,6 +21,7 @@ class GrootlyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Grootly App',
+
       // themeMode: ThemeMode.light,
       // theme: ThemeData.light(useMaterial3: true),
       // darkTheme: ThemeData.dark(useMaterial3: true),
