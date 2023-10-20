@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grootly_app/src/core/presentation/navigation/bottom_nav_page.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
@@ -40,11 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void navigateToBottomNavPage() {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const BottomNavPage(),
-      ),
-    );
+    Navigator.pushReplacementNamed(context, '/bottom_nav_page');
   }
 
   void showSnackBar(String message) {

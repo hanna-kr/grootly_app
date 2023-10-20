@@ -10,8 +10,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool selectedLanguage = true;
-  TimeOfDay lastChanged = const TimeOfDay(hour: 08, minute: 15);
+  // bool selectedLanguage = true;
+  // TimeOfDay lastChanged = const TimeOfDay(hour: 08, minute: 15);
 
   @override
   Widget build(BuildContext context) {

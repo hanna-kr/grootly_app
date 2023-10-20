@@ -4,21 +4,25 @@ import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
 import 'package:grootly_app/src/features/recipes/application/recipe_service.dart';
 import 'package:grootly_app/src/features/recipes/domain/recipe_model.dart';
 
-class RecipePage extends StatefulWidget {
-  const RecipePage({super.key});
+class RecipeScreen extends StatefulWidget {
+  const RecipeScreen({super.key});
 
   @override
-  State<RecipePage> createState() => _RecipePageState();
+  State<RecipeScreen> createState() => _RecipeScreenState();
 }
 
-class _RecipePageState extends State<RecipePage> {
+class _RecipeScreenState extends State<RecipeScreen> {
   final RecipeService recipeService = RecipeService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
+        leadingIcon: Icons.add,
+        onLeadingPressed: () {
+          Navigator.pushNamed(context, '/recipe_creator');
+        },
         title: 'Rezepte',
       ),
       body: FutureBuilder<List<RecipeModel>>(

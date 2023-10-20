@@ -46,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
         onLeadingPressed: () {
           Navigator.pop(context);
         },
-        trailingIcon: Icons.settings_outlined,
+        trailingIcon: Icons.settings,
         onTrailingPressed: () {
           Navigator.pushNamed(context, '/settings');
         },

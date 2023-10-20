@@ -6,14 +6,14 @@ import 'package:grootly_app/src/core/presentation/widgets/image_card_big.dart';
 import 'package:grootly_app/src/features/recipes/presentation/widgets/recipe_card_small.dart';
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomeScreen> {
   final List<Recipe> recipesNew = [
     Recipe(
       recipeName: 'Baguette',
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Welcome back',
-        trailingIcon: Icons.person_2_outlined,
+        trailingIcon: Icons.person,
         onTrailingPressed: () {
           Navigator.pushNamed(context, '/profile');
         },
