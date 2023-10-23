@@ -4,6 +4,7 @@ import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/textfield_deco/textfield_deco.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
+import 'package:grootly_app/src/features/profile/presentation/widgets/custom_image_picker.dart';
 
 class RecipeCreatorPage extends StatefulWidget {
   const RecipeCreatorPage({super.key});
@@ -14,6 +15,14 @@ class RecipeCreatorPage extends StatefulWidget {
 
 class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
   final TextEditingController _recipeController = TextEditingController();
+
+  String recipeImagePath = '';
+
+  void setRecipeImagePath(String? imagePath) {
+    setState(() {
+      recipeImagePath = imagePath ?? '';
+    });
+  }
 
   bool isclicked = false;
 
@@ -73,6 +82,13 @@ class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
                   const Text('schwer'),
                 ],
               ),
+              SpacingH.m,
+              const Text(
+                'Bild',
+                style: GrootlyTextStyle.headlineB4,
+              ),
+              SpacingH.s,
+              Center(child: CustomImagePicker(setImage: setRecipeImagePath))
             ],
           ),
         ),

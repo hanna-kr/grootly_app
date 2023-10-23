@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
+import 'package:grootly_app/src/core/presentation/styles/icons/grootly_icons_icons.dart';
 import 'package:grootly_app/src/features/favourite/presentation/screens/favourite_screen.dart';
 import 'package:grootly_app/src/features/home/presentation/home_provider.dart';
 import 'package:grootly_app/src/features/home/presentation/home_screen.dart';
@@ -45,8 +46,7 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.bowlFood), label: 'Rezepte'),
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.handsHoldingCircle),
-                label: 'Tipps'),
+                icon: FaIcon(GrootlyIcons.sustainable), label: 'Tipps'),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.solidHeart), label: 'Favoriten'),
           ],

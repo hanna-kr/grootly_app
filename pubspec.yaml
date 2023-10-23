@@ -27,6 +27,7 @@ dependencies:
   flutter_native_splash: ^2.3.3
   font_awesome_flutter: ^10.6.0
   provider: ^6.0.5
+  google_sign_in: ^6.1.5
 
 
 
