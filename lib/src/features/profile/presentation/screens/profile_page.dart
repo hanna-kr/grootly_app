@@ -9,7 +9,6 @@ import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
 import 'package:grootly_app/src/core/presentation/widgets/primary_button.dart';
 import 'package:grootly_app/src/core/presentation/widgets/secondary_button.dart';
 import 'package:grootly_app/src/features/authentication/application/auth_service.dart';
-import 'package:grootly_app/src/features/profile/presentation/widgets/custom_image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -19,21 +18,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final TextEditingController _emailController = TextEditingController();
-
-  String avatarImagePath = '';
-
-  void setAvatarImagePath(String? imagePath) {
-    setState(() {
-      avatarImagePath = imagePath ?? '';
-    });
-  }
+  final User user = FirebaseAuth.instance.currentUser!;
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _emailController.text = _auth.currentUser!.email ?? '';
+    _nameController.text = user.email ?? '';
   }
 
   @override
@@ -53,74 +44,53 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: Padding(
         padding: PaddingAll.l,
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: SafeArea(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomImagePicker(setImage: setAvatarImagePath),
-                    SpacingH.l,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Vorname',
-                          style: GrootlyTextStyle.body1,
-                        ),
-                        SpacingH.s,
-                        TextField(
-                          decoration: kTextFieldDecoration.copyWith(
-                            labelText: 'Vorname',
-                            hintText: 'Ändere hier deinen Vornamen',
-                          ),
-                        ),
-                        SpacingH.m,
-                        const Text(
-                          'Nachname',
-                          style: GrootlyTextStyle.body1,
-                        ),
-                        SpacingH.s,
-                        TextField(
-                          decoration: kTextFieldDecoration.copyWith(
-                            labelText: 'Nachname',
-                            hintText: 'Ändere hier deinen Nachnamen',
-                          ),
-                        ),
-                        SpacingH.m,
-                        const Text(
-                          'E-mail',
-                          style: GrootlyTextStyle.body1,
-                        ),
-                        SpacingH.s,
-                        TextField(
-                          controller: _emailController,
-                          decoration: kTextFieldDecoration.copyWith(
-                            labelText: 'E-mail',
-                            hintText: 'Ändere hier deine E-mail',
-                          ),
-                        ),
-                      ],
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Username',
+                    style: GrootlyTextStyle.body1,
+                  ),
+                  SpacingH.s,
+                  TextField(
+                    controller: _nameController,
+                    decoration: kTextFieldDecoration.copyWith(
+                      labelText: 'Username',
+                      hintText: 'Ändere hier deinen Namen',
                     ),
-                    SpacingH.l,
-                    PrimaryButton(text: 'speichern', onPressed: () {}),
-                    SpacingH.l,
-                    SecondaryButton(
-                        icon: Icons.logout,
-                        text: 'Logout',
-                        onPressed: () {
-                          AuthService().logout();
-
-                          Navigator.pushReplacementNamed(context, '/login');
-                        })
-                  ],
-                ),
+                  ),
+                  SpacingH.m,
+                  const Text(
+                    'E-mail',
+                    style: GrootlyTextStyle.body1,
+                  ),
+                  SpacingH.s,
+                  Text(
+                    user.email ?? '',
+                    style: GrootlyTextStyle.body2,
+                  )
+                ],
               ),
-            ),
-          ],
+              SpacingH.l,
+              Column(
+                children: [
+                  PrimaryButton(text: 'speichern', onPressed: () {}),
+                  SpacingH.m,
+                  SecondaryButton(
+                      icon: Icons.logout,
+                      text: 'Logout',
+                      onPressed: () {
+                        AuthService().logout();
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                      }),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -122,7 +122,7 @@ class GrootlyTextStyle {
 
   static const TextStyle buttonTert = TextStyle(
       height: 1.375,
-      fontSize: 16,
+      fontSize: 14,
       color: GrootlyColor.limegreen,
       decoration: TextDecoration.underline,
       fontFamily: 'Poppins',
@@ -134,4 +134,27 @@ class GrootlyTextStyle {
       fontSize: 14,
       color: GrootlyColor.mediumgrey,
       fontFamily: 'Poppins');
+
+  // Underline Textbutton / Login / Sign Up
+  static const TextStyle underline = TextStyle(
+      decoration: TextDecoration.underline,
+      height: 1.4286,
+      fontSize: 14,
+      color: GrootlyColor.limegreen,
+      fontFamily: 'Poppins');
+
+// SnackBar Text
+  static const TextStyle snackbar = TextStyle(
+      height: 1.4286,
+      fontSize: 14,
+      color: GrootlyColor.white,
+      fontFamily: 'Poppins');
+
+// Label Recipe Card
+  static const TextStyle label = TextStyle(
+      height: 1.375,
+      fontSize: 14,
+      color: GrootlyColor.white,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold);
 }

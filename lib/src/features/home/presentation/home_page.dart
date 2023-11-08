@@ -41,10 +41,9 @@ class _HomePageState extends State<HomePage> {
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.houseChimneyWindow),
-                label: 'Home'),
+                icon: FaIcon(FontAwesomeIcons.houseChimney), label: 'Home'),
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.bowlFood), label: 'Rezepte'),
+                icon: FaIcon(FontAwesomeIcons.utensils), label: 'Rezepte'),
             BottomNavigationBarItem(
                 icon: FaIcon(GrootlyIcons.sustainable), label: 'Tipps'),
             BottomNavigationBarItem(

@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class RecipeModel {
-  String category;
-  Map<String, String> description;
+  String recipeId;
+  List<String> category;
+  List<String> description;
   String difficulty;
   String prepDuration;
   String cookDuration;
@@ -11,51 +10,38 @@ class RecipeModel {
   String title;
   List<String> utensils;
   String servings;
+  String duration;
+  String? restTime;
 
-  RecipeModel({
-    required this.category,
-    required this.description,
-    required this.difficulty,
-    required this.prepDuration,
-    required this.cookDuration,
-    required this.imgURL,
-    required this.ingredients,
-    required this.title,
-    required this.utensils,
-    required this.servings,
-  });
+  RecipeModel(
+      {required this.recipeId,
+      required this.category,
+      required this.description,
+      required this.difficulty,
+      required this.prepDuration,
+      required this.cookDuration,
+      required this.imgURL,
+      required this.ingredients,
+      required this.title,
+      required this.utensils,
+      required this.servings,
+      required this.duration,
+      required this.restTime});
 
-  factory RecipeModel.fromMap(Map<String, dynamic> map) {
+  factory RecipeModel.fromJson(Map<String, dynamic> json, String recipeId) {
     return RecipeModel(
-        category: map['category'],
-        description: Map<String, String>.from(map['description']),
-        difficulty: map['difficulty'],
-        imgURL: map['imgURL'],
-        ingredients: Map<String, String>.from(map['ingredients']),
-        title: map['title'],
-        utensils: List<String>.from(map['utensils']),
-        prepDuration: map['prepDuration'],
-        cookDuration: map['cookDuration'],
-        servings: map['servings']);
-  }
-
-  factory RecipeModel.fromSnapshot(DocumentSnapshot snapshot) {
-    final data = snapshot.data() as Map<String, dynamic>;
-    return RecipeModel.fromMap(data);
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'category': category,
-      'description': description,
-      'difficulty': difficulty,
-      'prepDuration': prepDuration,
-      'cookDuration': cookDuration,
-      'imgURL': imgURL,
-      'ingredients': ingredients,
-      'title': title,
-      'utensils': utensils,
-      'servings': servings,
-    };
+        recipeId: recipeId,
+        category: List<String>.from(json['category']),
+        description: List<String>.from(json['description']),
+        difficulty: json['difficulty'],
+        imgURL: json['imgURL'],
+        ingredients: Map<String, String>.from(json['ingredients']),
+        title: json['title'],
+        utensils: List<String>.from(json['utensils']),
+        prepDuration: json['prepDuration'],
+        cookDuration: json['cookDuration'],
+        servings: json['servings'],
+        duration: json['duration'],
+        restTime: json['restTime']);
   }
 }

@@ -30,8 +30,7 @@ class _TertiaryButtonState extends State<TertiaryButton> {
         Material(
           color: GrootlyColor.white,
           borderRadius: GrootlyBorderRadius.medium,
-          child: InkWell(
-            borderRadius: GrootlyBorderRadius.medium,
+          child: GestureDetector(
             onTap: widget.onPressed,
             child: SizedBox(
               child: Padding(

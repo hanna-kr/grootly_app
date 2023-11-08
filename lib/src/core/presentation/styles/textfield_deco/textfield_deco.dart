@@ -25,6 +25,13 @@ const InputDecoration kTextFieldDecoration = InputDecoration(
       width: 2,
     ),
   ),
+  errorBorder: OutlineInputBorder(
+    borderRadius: GrootlyBorderRadius.medium,
+    borderSide: BorderSide(
+      color: GrootlyColor.red,
+      width: 2,
+    ),
+  ),
   labelStyle: GrootlyTextStyle.textfield,
   hintStyle: GrootlyTextStyle.textfield,
   suffixIconColor: GrootlyColor.mediumgrey,

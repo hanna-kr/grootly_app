@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:grootly_app/src/features/recipes/domain/recipe_model.dart';
 
 class RecipeService {
@@ -6,15 +7,37 @@ class RecipeService {
       FirebaseFirestore.instance.collection('recipes');
 
   Future<List<RecipeModel>> getAllRecipes() async {
-    QuerySnapshot snapshot = await recipesCollection.get();
-    if (snapshot.docs.isNotEmpty) {
-      List<RecipeModel> recipes = [];
-      for (QueryDocumentSnapshot doc in snapshot.docs) {
-        recipes.add(RecipeModel.fromSnapshot(doc));
-      }
+    try {
+      QuerySnapshot collection = await recipesCollection.get();
+      List<Map<String, dynamic>> rawData = collection.docs
+          .map((doc) => doc.data() as Map<String, dynamic>)
+          .toList();
+
+      List<RecipeModel> recipes = rawData
+          .map((val) => RecipeModel.fromJson(val, val.keys.toString()))
+          .toList();
       return recipes;
-    } else {
-      throw Exception('No recipes found');
+    } catch (e) {
+      debugPrint(e.toString());
+      return [];
+    }
+  }
+
+  Stream<List<RecipeModel>> getAllRecipesStream() {
+    try {
+      return recipesCollection.snapshots().map((snapshot) {
+        List<Map<String, dynamic>> rawData = snapshot.docs
+            .map((doc) => doc.data() as Map<String, dynamic>)
+            .toList();
+
+        List<RecipeModel> recipes = rawData
+            .map((val) => RecipeModel.fromJson(val, val.keys.toString()))
+            .toList();
+        return recipes;
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+      return Stream.value([]);
     }
   }
 }

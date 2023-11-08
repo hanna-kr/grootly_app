@@ -12,7 +12,12 @@
           "package_name": "com.example.grootly_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1085165901528-f2rf82ioq9nd7m2voeavi4pm67qupi82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBIJPYcNBgEFyO8ILeiAWHUMkrFy1MZAW8"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085165901528-f2rf82ioq9nd7m2voeavi4pm67qupi82.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1085165901528-5ugo1irl5afck3m3m23d8nrggtjq1nj0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.grootlyApp.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

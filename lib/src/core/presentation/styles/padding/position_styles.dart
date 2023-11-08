@@ -13,4 +13,6 @@ class PaddingHor {
 
 class PaddingVer {
   static const EdgeInsets l = EdgeInsets.symmetric(vertical: 20.0);
+  static const EdgeInsets m = EdgeInsets.symmetric(vertical: 16.0);
+  static const EdgeInsets s = EdgeInsets.symmetric(vertical: 8.0);
 }
