@@ -20,6 +20,7 @@ class TipsScreen extends StatelessWidget {
         title: 'Tipps',
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         padding: PaddingAll.l,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,9 +47,14 @@ class TipsScreen extends StatelessWidget {
                       height: double.maxFinite,
                       width: double.maxFinite,
                       child: ListView(
+                        physics: const NeverScrollableScrollPhysics(),
                         children: tipsList
-                            .map((tip) => TipBigCard(
-                                  tips: tip,
+                            .map((tip) => Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 6),
+                                  child: TipBigCard(
+                                    tips: tip,
+                                  ),
                                 ))
                             .toList(),
                       ),

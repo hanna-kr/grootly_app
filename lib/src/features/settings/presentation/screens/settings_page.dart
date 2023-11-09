@@ -27,7 +27,8 @@ class _SettingsPageState extends State<SettingsPage> {
         debugPrint(e.toString());
       }
     } catch (e) {
-      Utils.showSnackBar('Error occurred');
+      Utils.showSnackBar(
+          'An error has occurred. If you encounter this error multiple times, we kindly suggest attempting the following steps to resolve it: 1. Log out of your account. 2. Log back in to ensure a fresh session. 3. Delete account.');
     }
   }
 
@@ -44,7 +45,8 @@ class _SettingsPageState extends State<SettingsPage> {
       }
       await FirebaseAuth.instance.currentUser?.delete();
     } catch (e) {
-      Utils.showSnackBar('Error occurred');
+      Utils.showSnackBar(
+          'An error has occurred. If you encounter this error multiple times, we kindly suggest attempting the following steps to resolve it: 1. Log out of your account. 2. Log back in to ensure a fresh session. 3. Delete account.');
     }
   }
 
@@ -80,29 +82,40 @@ class _SettingsPageState extends State<SettingsPage> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: const Text('Konto Löschen?'),
+                              title: const Text(
+                                'Konto löschen?',
+                                style: GrootlyTextStyle.headlineB5,
+                              ),
                               content: const Text(
-                                  'Wenn du hier klickst, wird dein Konto, als auch deine App-Daten auf unserem Server gelöscht. Dieser Vorgang ist nicht rückgängig.'),
+                                'Wenn du hier klickst, wird dein Konto, als auch deine App-Daten auf unserem Server gelöscht. Dieser Vorgang ist nicht rückgängig.',
+                                style: GrootlyTextStyle.body2,
+                              ),
                               actions: [
-                                TextButton(
-                                  child: const Text(
-                                    'Abbrechen',
-                                    style: GrootlyTextStyle.body2,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                TextButton(
-                                  child: const Text(
-                                    'Delete',
-                                    style: GrootlyTextStyle.delete,
-                                  ),
-                                  onPressed: () {
-                                    deleteUserAccount();
-                                    Navigator.of(context)
-                                        .popUntil((route) => route.isFirst);
-                                  },
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                      child: const Text(
+                                        'Abbrechen',
+                                        style: GrootlyTextStyle.body2,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    TextButton(
+                                      child: const Text(
+                                        'Delete',
+                                        style: GrootlyTextStyle.delete,
+                                      ),
+                                      onPressed: () {
+                                        deleteUserAccount();
+                                        Navigator.of(context)
+                                            .popUntil((route) => route.isFirst);
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ],
                             );
