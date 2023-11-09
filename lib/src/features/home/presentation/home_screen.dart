@@ -10,14 +10,9 @@ import 'package:grootly_app/src/features/settings/application/tips_service.dart'
 import 'package:grootly_app/src/features/tips/domain/tips_model.dart';
 import 'package:grootly_app/src/features/tips/presentation/widgets/tips_big_card.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   Tips getCurrentTip(List<Tips> tipsList) {
     int currentDay = DateTime.now().day;
     Random random = Random(currentDay);

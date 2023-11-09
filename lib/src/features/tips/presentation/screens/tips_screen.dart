@@ -48,9 +48,7 @@ class TipsScreen extends StatelessWidget {
                       child: ListView(
                         children: tipsList
                             .map((tip) => TipBigCard(
-                                  hasLabel: false,
                                   tips: tip,
-                                  text: 'Tipp der Woche',
                                 ))
                             .toList(),
                       ),
