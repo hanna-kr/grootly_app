@@ -3,7 +3,7 @@ import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart'
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
-import 'package:grootly_app/src/features/settings/application/tips_service.dart';
+import 'package:grootly_app/src/features/tips/application/tips_service.dart';
 import 'package:grootly_app/src/features/tips/domain/tips_model.dart';
 import 'package:grootly_app/src/features/tips/presentation/widgets/tips_big_card.dart';
 
