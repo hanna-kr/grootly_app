@@ -39,7 +39,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           password: _passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
-        Utils.showSnackBar('Incorrect password');
+        Utils.showSnackBar('Incorrect email and/or password');
       } else {
         debugPrint(e.toString());
         Utils.showSnackBar(e.message);

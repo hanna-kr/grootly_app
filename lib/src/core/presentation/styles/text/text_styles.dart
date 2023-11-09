@@ -157,4 +157,13 @@ class GrootlyTextStyle {
       color: GrootlyColor.white,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);
+
+// Delete Function
+
+  static const TextStyle delete = TextStyle(
+      height: 1.4286,
+      fontSize: 14,
+      color: GrootlyColor.red,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold);
 }

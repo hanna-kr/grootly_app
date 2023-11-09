@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
+import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_sliver_appbar.dart';
@@ -14,6 +15,7 @@ class TipDetailsPage extends StatelessWidget {
       List<String> paragraphs = text.split(RegExp(r'\. '));
 
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: paragraphs.map((paragraph) {
           return Column(
             children: [
@@ -49,7 +51,7 @@ class TipDetailsPage extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: PaddingAll.l,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
