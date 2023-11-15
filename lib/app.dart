@@ -1,6 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:grootly_app/src/features/authentication/domain/utils.dart';
+import 'package:grootly_app/src/core/presentation/widgets/utils.dart';
+import 'package:grootly_app/src/features/authentication/presentation/pages/auth_provider.dart';
 import 'package:grootly_app/src/features/authentication/presentation/pages/password_forgotten.dart';
 import 'package:grootly_app/src/features/home/presentation/home_page.dart';
 import 'package:grootly_app/src/features/authentication/presentation/pages/main_page.dart';
@@ -23,8 +24,13 @@ class GrootlyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<HomeProvider>(
-      create: (context) => HomeProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<HomeProvider>(
+            create: (context) => HomeProvider()),
+        ChangeNotifierProvider<AuthProvider>(
+            create: (context) => AuthProvider()),
+      ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: Utils.messengerKey,

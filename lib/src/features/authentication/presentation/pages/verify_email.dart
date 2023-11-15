@@ -9,8 +9,8 @@ import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/widgets/primary_button.dart';
 import 'package:grootly_app/src/core/presentation/widgets/secondary_button.dart';
+import 'package:grootly_app/src/core/presentation/widgets/utils.dart';
 import 'package:grootly_app/src/features/authentication/application/auth_service.dart';
-import 'package:grootly_app/src/features/authentication/domain/utils.dart';
 import 'package:grootly_app/src/features/home/presentation/home_page.dart';
 
 class VerifyEmailPage extends StatefulWidget {
@@ -22,7 +22,6 @@ class VerifyEmailPage extends StatefulWidget {
 
 class _VerifyEmailPageState extends State<VerifyEmailPage> {
   bool isEmailVerified = false;
-  bool canResendEmail = false;
   Timer? timer;
   final email = FirebaseAuth.instance.currentUser!.email;
 
@@ -30,11 +29,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     try {
       final user = FirebaseAuth.instance.currentUser!;
       await user.sendEmailVerification();
-      setState(() => canResendEmail = false);
-      await Future.delayed(const Duration(seconds: 5));
-      setState(() => canResendEmail = true);
-    } catch (e) {
-      Utils.showSnackBar(e.toString());
+    } on FirebaseAuthException catch (e) {
+      Utils.showSnackBar(
+          'Please wait for 60 Seconds and then try again. ${e.message}');
     }
   }
 
@@ -103,9 +100,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                           PrimaryButton(
                               text: 'Nochmal senden',
                               onPressed: () {
-                                if (canResendEmail) {
-                                  sendVerificationEmail();
-                                }
+                                sendVerificationEmail();
                               }),
                           SpacingH.m,
                           SecondaryButton(

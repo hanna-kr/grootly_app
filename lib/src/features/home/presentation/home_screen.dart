@@ -54,8 +54,10 @@ class HomeScreen extends StatelessWidget {
                   );
                 } else if (snapshot.connectionState ==
                     ConnectionState.waiting) {
-                  return const CircularProgressIndicator(
-                    color: GrootlyColor.mediumgreen,
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: GrootlyColor.mediumgreen,
+                    ),
                   );
                 } else {
                   List<Tips> tipsList = snapshot.data ?? [];

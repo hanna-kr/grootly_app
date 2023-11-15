@@ -49,12 +49,8 @@ class TipsScreen extends StatelessWidget {
                       child: ListView(
                         physics: const NeverScrollableScrollPhysics(),
                         children: tipsList
-                            .map((tip) => Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 6),
-                                  child: TipBigCard(
-                                    tips: tip,
-                                  ),
+                            .map((tip) => TipBigCard(
+                                  tips: tip,
                                 ))
                             .toList(),
                       ),

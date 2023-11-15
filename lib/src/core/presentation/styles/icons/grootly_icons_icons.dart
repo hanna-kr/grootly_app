@@ -8,6 +8,6 @@ class GrootlyIcons {
 
   static const IconData sustainable =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData house_user =
+  static const IconData houseUser =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

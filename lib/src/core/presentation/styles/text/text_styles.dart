@@ -166,4 +166,13 @@ class GrootlyTextStyle {
       color: GrootlyColor.red,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);
+
+// Reauthenticate Function
+
+  static const TextStyle reauthenticate = TextStyle(
+      height: 1.4286,
+      fontSize: 14,
+      color: GrootlyColor.limegreen,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold);
 }
