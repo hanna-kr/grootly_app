@@ -49,7 +49,6 @@ class ReauthenticationPage extends StatelessWidget {
                   controller: provider.passwordController,
                   obscureText: !provider.passwordVisible,
                   decoration: kTextFieldDecoration.copyWith(
-                    labelText: 'Passwort',
                     hintText: 'Passwort',
                     suffixIcon: IconButton(
                       icon: Icon(provider.passwordVisible

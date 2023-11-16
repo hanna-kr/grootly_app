@@ -65,7 +65,6 @@ class ForgotPasswordWidget extends StatelessWidget {
                 TextFormField(
                   controller: provider.emailController,
                   decoration: kTextFieldDecoration.copyWith(
-                    labelText: 'Email',
                     hintText: 'Email',
                   ),
                   autovalidateMode: AutovalidateMode.onUserInteraction,

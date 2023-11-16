@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
+import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/widgets/icon_button.dart';
 
@@ -21,35 +22,38 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      elevation: 0,
-      backgroundColor: GrootlyColor.white,
-      centerTitle: true,
-      leading: (leadingIcon != null || onLeadingPressed != null)
-          ? Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: MyIconButton(
-                icon: leadingIcon!,
-                onPressed: onLeadingPressed,
-              ),
-            )
-          : null,
-      title: Text(
-        title ?? '',
-        style: GrootlyTextStyle.headlineB2,
-      ),
-      actions: (trailingIcon != null || onTrailingPressed != null)
-          ? [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+    return Padding(
+      padding: PaddingHor.m,
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: GrootlyColor.white,
+        centerTitle: true,
+        leading: (leadingIcon != null || onLeadingPressed != null)
+            ? Padding(
+                padding: PaddingAll.xs,
                 child: MyIconButton(
-                  icon: trailingIcon!,
-                  onPressed: onTrailingPressed,
+                  icon: leadingIcon!,
+                  onPressed: onLeadingPressed,
                 ),
-              ),
-            ]
-          : null,
+              )
+            : null,
+        title: Text(
+          title ?? '',
+          style: GrootlyTextStyle.headlineB2,
+        ),
+        actions: (trailingIcon != null || onTrailingPressed != null)
+            ? [
+                Padding(
+                  padding: PaddingAll.xs,
+                  child: MyIconButton(
+                    icon: trailingIcon!,
+                    onPressed: onTrailingPressed,
+                  ),
+                ),
+              ]
+            : null,
+      ),
     );
   }
 

@@ -19,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final User user = FirebaseAuth.instance.currentUser!;
+
   final TextEditingController _nameController = TextEditingController();
 
   @override

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -94,5 +95,14 @@ class AuthService {
     } catch (e) {
       rethrow;
     }
+  }
+
+// Add User Details
+
+  Future addUserDetails(String userName, String email) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'username': userName,
+      'email': email,
+    });
   }
 }

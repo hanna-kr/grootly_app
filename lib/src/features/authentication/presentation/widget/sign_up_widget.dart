@@ -66,6 +66,18 @@ class SignUpWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // const Text(
+                    //   'Username',
+                    //   style: GrootlyTextStyle.body1,
+                    // ),
+                    // SpacingH.s,
+                    // TextFormField(
+                    //   controller: provider.nameController,
+                    //   decoration: kTextFieldDecoration.copyWith(
+                    //     hintText: 'Name',
+                    //   ),
+                    // ),
+                    // SpacingH.m,
                     const Text(
                       'Email',
                       style: GrootlyTextStyle.body1,
@@ -74,7 +86,6 @@ class SignUpWidget extends StatelessWidget {
                     TextFormField(
                       controller: provider.emailController,
                       decoration: kTextFieldDecoration.copyWith(
-                        labelText: 'Email',
                         hintText: 'Email',
                       ),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -83,7 +94,7 @@ class SignUpWidget extends StatelessWidget {
                               ? 'Geben Sie eine gültige E-Mail ein'
                               : null,
                     ),
-                    SpacingH.l,
+                    SpacingH.m,
                     const Text(
                       'Passwort',
                       style: GrootlyTextStyle.body1,
@@ -93,7 +104,6 @@ class SignUpWidget extends StatelessWidget {
                       controller: provider.passwordController,
                       obscureText: !provider.passwordVisible,
                       decoration: kTextFieldDecoration.copyWith(
-                        labelText: 'Passwort',
                         hintText: 'Passwort',
                         suffixIcon: IconButton(
                           icon: Icon(provider.passwordVisible

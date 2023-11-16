@@ -167,6 +167,14 @@ class GrootlyTextStyle {
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);
 
+// Error Show Dialog Display
+
+  static const TextStyle errorMessage = TextStyle(
+      height: 1.6667,
+      fontSize: 12,
+      color: GrootlyColor.red,
+      fontFamily: 'Poppins');
+
 // Reauthenticate Function
 
   static const TextStyle reauthenticate = TextStyle(

@@ -32,6 +32,7 @@ class _TipBigCardState extends State<TipBigCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
       color: GrootlyColor.lightgrey2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),

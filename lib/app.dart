@@ -7,6 +7,7 @@ import 'package:grootly_app/src/features/home/presentation/home_page.dart';
 import 'package:grootly_app/src/features/authentication/presentation/pages/main_page.dart';
 import 'package:grootly_app/src/features/home/presentation/home_provider.dart';
 import 'package:grootly_app/src/features/profile/presentation/screens/profile_page.dart';
+import 'package:grootly_app/src/features/recipes/presentation/screens/recipe_details.dart';
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipe_form.dart';
 import 'package:grootly_app/src/features/favourite/presentation/screens/favourite_screen.dart';
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipes_screen.dart';
@@ -49,6 +50,7 @@ class GrootlyApp extends StatelessWidget {
           '/recipe_creator': (context) => const RecipeCreatorPage(),
           '/bottom_nav_page': (context) => const HomePage(),
           '/tip_details': (context) => const TipDetailsPage(),
+          '/recipe_details': (context) => const RecipeDetailsPage(),
         },
       ),
     );

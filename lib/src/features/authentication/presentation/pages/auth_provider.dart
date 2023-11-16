@@ -9,24 +9,25 @@ class AuthProvider extends ChangeNotifier {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   bool _passwordVisible = false;
   bool _isEmailVerified = false;
   bool _canResendEmail = false;
   bool _isLogin = false;
 
+  String _errormessage = '';
+
 // getter
 
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
-  TextEditingController get confirmPasswordController =>
-      _confirmPasswordController;
+  TextEditingController get nameController => _nameController;
   bool get passwordVisible => _passwordVisible;
   bool get isEmailVerified => _isEmailVerified;
   bool get canResendEmail => _canResendEmail;
   bool get isLogin => _isLogin;
+  String get errormessage => _errormessage;
 
 // functions
 
@@ -36,12 +37,15 @@ class AuthProvider extends ChangeNotifier {
     try {
       await authService
           .signUpWithEmail(
-        _emailController.text,
-        _passwordController.text,
-      )
-          .then((value) {
-        clearController();
-      });
+            _emailController.text,
+            _passwordController.text,
+          )
+          .then((value) => clearController());
+      // // Add User Details
+      // authService
+      //     .addUserDetails(
+      //         _nameController.text.trim(), _emailController.text.trim())
+      //     .then((value) => clearController());
     } catch (e) {
       clearController();
       rethrow;
@@ -64,6 +68,12 @@ class AuthProvider extends ChangeNotifier {
       rethrow;
     }
     notifyListeners();
+  }
+
+// Reauthenticate with Password
+
+  Future<void> reauthenticate() async {
+    try {} catch (e) {}
   }
 
 // Reset Password
@@ -110,6 +120,13 @@ class AuthProvider extends ChangeNotifier {
 
   void toggle() {
     _isLogin = !_isLogin;
+    notifyListeners();
+  }
+
+// Error message Reauthentication
+
+  void setErrorMessage(String errormessage) {
+    _errormessage = errormessage;
     notifyListeners();
   }
 }

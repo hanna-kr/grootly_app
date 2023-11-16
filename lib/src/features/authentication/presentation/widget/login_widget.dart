@@ -79,7 +79,6 @@ class LoginWidget extends StatelessWidget {
                   TextField(
                     controller: provider.emailController,
                     decoration: kTextFieldDecoration.copyWith(
-                      labelText: 'Email',
                       hintText: 'Email',
                     ),
                   ),
@@ -93,7 +92,6 @@ class LoginWidget extends StatelessWidget {
                     controller: provider.passwordController,
                     obscureText: !provider.passwordVisible,
                     decoration: kTextFieldDecoration.copyWith(
-                      labelText: 'Passwort',
                       hintText: 'Passwort',
                       suffixIcon: IconButton(
                         icon: Icon(provider.passwordVisible

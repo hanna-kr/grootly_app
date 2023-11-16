@@ -4,13 +4,13 @@ import 'package:grootly_app/src/core/presentation/styles/padding/position_styles
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
 import 'package:grootly_app/src/features/recipes/application/recipe_service.dart';
 import 'package:grootly_app/src/features/recipes/domain/recipe_model.dart';
-import 'package:grootly_app/src/features/recipes/presentation/widgets/big_recipe_card.dart';
+import 'package:grootly_app/src/features/recipes/presentation/widgets/small_recipe_card.dart';
 
 class RecipeScreen extends StatefulWidget {
   const RecipeScreen({super.key});
 
   @override
-  _RecipeScreenState createState() => _RecipeScreenState();
+  State<RecipeScreen> createState() => _RecipeScreenState();
 }
 
 class _RecipeScreenState extends State<RecipeScreen> {
@@ -56,13 +56,16 @@ class _RecipeScreenState extends State<RecipeScreen> {
               );
             } else if (snapshot.hasData) {
               recipes = snapshot.data ?? [];
-              return ListView.builder(
+              return GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16.0,
+                  mainAxisSpacing: 16.0,
+                ),
                 itemCount: recipes.length,
                 itemBuilder: (context, index) {
                   RecipeModel recipe = recipes[index];
-                  return RecipeBigCard(
-                    text: 'Tipp der Woche',
-                    hasLabel: false,
+                  return RecipeSmallCard(
                     recipe: recipe,
                     isFavorite: userFavorites.contains(recipe.recipeId),
                     onFavoritePressed: _handleFavoritesListChanged,
@@ -70,7 +73,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 },
               );
             } else {
-              return const Text('No recipes found');
+              return const Center(
+                child: Text('No recipes found'),
+              );
             }
           },
         ),
