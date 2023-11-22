@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.grootlyApp</string>
+	<string>com.appakademie.hanna.grootly</string>
 	<key>PROJECT_ID</key>
 	<string>grootly-app</string>
 	<key>STORAGE_BUCKET</key>

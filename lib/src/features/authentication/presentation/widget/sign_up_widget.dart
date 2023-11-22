@@ -22,6 +22,7 @@ class SignUpWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthService authService = AuthService();
     // UI Logic
 
     // Email Login
@@ -162,7 +163,9 @@ class SignUpWidget extends StatelessWidget {
                             imagePath: 'assets/images/example/googlelogo.png'),
                         SpacingW.l,
                         SquareSecondaryButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              authService.signInWithApple();
+                            },
                             imagePath: 'assets/images/example/apple-logo.png'),
                       ],
                     )

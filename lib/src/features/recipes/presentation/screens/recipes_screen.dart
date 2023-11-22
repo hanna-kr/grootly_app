@@ -18,14 +18,34 @@ class _RecipeScreenState extends State<RecipeScreen> {
   List<RecipeModel> recipes = [];
   List<String> userFavorites = [];
 
-  void _handleFavoritesListChanged(String recipeId) {
-    setState(() {
+  void _fetchUserFavorites() async {
+    try {
+      userFavorites = await recipeService.fetchUserFavorites();
+      setState(() {});
+    } catch (e) {
+      debugPrint('Error fetching favorites: $e');
+    }
+  }
+
+  void _handleFavoritesListChanged(String recipeId) async {
+    try {
       if (userFavorites.contains(recipeId)) {
+        await recipeService.removeFromFavorites(recipeId);
         userFavorites.remove(recipeId);
       } else {
+        await recipeService.addToFavorites(recipeId);
         userFavorites.add(recipeId);
       }
-    });
+      setState(() {});
+    } catch (e) {
+      debugPrint('Error updating favorites: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserFavorites();
   }
 
   @override

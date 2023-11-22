@@ -63,19 +63,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAHgg0n4nZqKlnK_dUQlLGaeqREi0VwQu8',
-    appId: '1:1085165901528:ios:ade698062e20803b3929ad',
+    appId: '1:1085165901528:ios:d431134ea0c7f6993929ad',
     messagingSenderId: '1085165901528',
     projectId: 'grootly-app',
     storageBucket: 'grootly-app.appspot.com',
-    iosBundleId: 'com.example.grootlyApp',
+    androidClientId: '1085165901528-d6jkj8cj4208okmu4adjp08f4hf1dhh5.apps.googleusercontent.com',
+    iosClientId: '1085165901528-0u2tadommjorilkkg4jaf6ctneras1nc.apps.googleusercontent.com',
+    iosBundleId: 'com.appakademie.hanna.grootly',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAHgg0n4nZqKlnK_dUQlLGaeqREi0VwQu8',
-    appId: '1:1085165901528:ios:f68e4d667e3e328c3929ad',
+    appId: '1:1085165901528:ios:dc324305c34da2bf3929ad',
     messagingSenderId: '1085165901528',
     projectId: 'grootly-app',
     storageBucket: 'grootly-app.appspot.com',
-    iosBundleId: 'com.example.grootlyApp.RunnerTests',
+    androidClientId: '1085165901528-d6jkj8cj4208okmu4adjp08f4hf1dhh5.apps.googleusercontent.com',
+    iosClientId: '1085165901528-3fggcg1bjuptuf4sr07mp881qu3bp4fq.apps.googleusercontent.com',
+    iosBundleId: 'com.appakademie.hanna.grootly.RunnerTests',
   );
 }

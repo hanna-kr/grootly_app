@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "1085165901528-f2rf82ioq9nd7m2voeavi4pm67qupi82.apps.googleusercontent.com",
+          "client_id": "1085165901528-d6jkj8cj4208okmu4adjp08f4hf1dhh5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grootly_app",
+            "certificate_hash": "956d8f345086c230f7937fd8549f0defc4c32335"
+          }
+        },
+        {
+          "client_id": "1085165901528-7udif18ht2q5d13fftujhm825ekquv3c.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1085165901528-f2rf82ioq9nd7m2voeavi4pm67qupi82.apps.googleusercontent.com",
+              "client_id": "1085165901528-7udif18ht2q5d13fftujhm825ekquv3c.apps.googleusercontent.com",
               "client_type": 3
             },
             {

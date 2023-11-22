@@ -1,21 +1,73 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/features/recipes/domain/recipe_model.dart';
 
 class RecipeService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final CollectionReference recipesCollection =
       FirebaseFirestore.instance.collection('recipes');
+
+// Fetch User Favourites
+
+  Future<List<String>> fetchUserFavorites() async {
+    String? userId = _auth.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
+
+    DocumentSnapshot favoriteDoc =
+        await _firestore.collection('favorites').doc(userId).get();
+    if (favoriteDoc.exists) {
+      return List.from(favoriteDoc['recipes']);
+    }
+
+    return [];
+  }
+
+// Add Favourites to Firebase
+
+  Future<void> addToFavorites(String recipeId) async {
+    String? userId = _auth.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
+
+    DocumentReference favoritesRef =
+        _firestore.collection('favorites').doc(userId);
+    await favoritesRef.set({
+      'recipeId': FieldValue.arrayUnion([recipeId])
+    }, SetOptions(merge: true));
+  }
+
+// Remove Favourites from Firebase
+
+  Future<void> removeFromFavorites(String recipeId) async {
+    String? userId = _auth.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
+
+    DocumentReference favoritesRef =
+        _firestore.collection('favorites').doc(userId);
+    await favoritesRef.update({
+      'recipeId': FieldValue.arrayRemove([recipeId])
+    });
+  }
+
+// Future Function to get all recipes
 
   Future<List<RecipeModel>> getAllRecipes() async {
     try {
       QuerySnapshot collection = await recipesCollection.get();
-      List<Map<String, dynamic>> rawData = collection.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
+      List<RecipeModel> recipes = collection.docs
+          .map((doc) =>
+              RecipeModel.fromJson(doc.data() as Map<String, dynamic>, doc.id))
           .toList();
 
-      List<RecipeModel> recipes = rawData
-          .map((val) => RecipeModel.fromJson(val, val.keys.toString()))
-          .toList();
       return recipes;
     } catch (e) {
       debugPrint(e.toString());
@@ -23,21 +75,13 @@ class RecipeService {
     }
   }
 
-  Stream<List<RecipeModel>> getAllRecipesStream() {
-    try {
-      return recipesCollection.snapshots().map((snapshot) {
-        List<Map<String, dynamic>> rawData = snapshot.docs
-            .map((doc) => doc.data() as Map<String, dynamic>)
-            .toList();
+  // Stream Function to get all recipes
 
-        List<RecipeModel> recipes = rawData
-            .map((val) => RecipeModel.fromJson(val, val.keys.toString()))
-            .toList();
-        return recipes;
-      });
-    } catch (e) {
-      debugPrint(e.toString());
-      return Stream.value([]);
-    }
+  Stream<List<RecipeModel>> getAllRecipesStream() {
+    return recipesCollection.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return RecipeModel.fromJson(doc.data() as Map<String, dynamic>, doc.id);
+      }).toList();
+    });
   }
 }
