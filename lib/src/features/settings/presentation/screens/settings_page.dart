@@ -22,7 +22,8 @@ class SettingsPage extends StatelessWidget {
       AuthService authService = AuthService();
       await authService.deleteUserAccount().then(
           (value) => Navigator.of(context).popUntil((route) => route.isFirst));
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
+      // ignore: use_build_context_synchronously
       showReauthentication(context);
     } catch (e) {
       Utils.showSnackBar(e.toString());
@@ -117,89 +118,103 @@ class SettingsPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Consumer<AuthProvider>(builder: (context, provider, child) {
-          return AlertDialog(
-            title: const Text(
-              'Erneuter Login nötig',
-              style: GrootlyTextStyle.headlineB5,
-            ),
-            content: Form(
-              key: provider.formKey,
-              child: Column(
-                children: [
-                  const Text(
-                    'Bevor du dein Konto löschst, logge dich bitte noch einmal ein.',
-                    style: GrootlyTextStyle.body2,
+          return Center(
+            child: SizedBox(
+              height: 420,
+              child: SingleChildScrollView(
+                child: AlertDialog(
+                  title: const Text(
+                    'Erneuter Login nötig',
+                    style: GrootlyTextStyle.headlineB5,
                   ),
-                  SpacingH.m,
-                  TextFormField(
-                      controller: provider.emailController,
-                      decoration: kTextFieldDecoration.copyWith(
-                        hintText: 'Email',
-                      ),
-                      validator: (value) {
-                        if (value?.isEmpty ?? true) {
-                          return 'Bitte gebe deine Email an';
-                        }
-                        return null;
-                      }),
-                  SpacingH.m,
-                  TextFormField(
-                    controller: provider.passwordController,
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Passwort',
+                  content: Form(
+                    key: provider.formKey,
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Bevor du dein Konto löschst, logge dich bitte noch einmal ein.',
+                          style: GrootlyTextStyle.body2,
+                        ),
+                        SpacingH.m,
+                        TextFormField(
+                            controller: provider.emailController,
+                            decoration: kTextFieldDecoration.copyWith(
+                              hintText: 'Email',
+                            ),
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Bitte gebe deine Email an';
+                              }
+                              return null;
+                            }),
+                        SpacingH.m,
+                        TextFormField(
+                          controller: provider.passwordController,
+                          decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Passwort',
+                          ),
+                          validator: (value) {
+                            if (value?.isEmpty ?? true) {
+                              return 'Bitte gebe dein Passwort an';
+                            }
+                            return null;
+                          },
+                        ),
+                        if (provider.errormessage.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(provider.errormessage,
+                                style: GrootlyTextStyle.errorMessage),
+                          )
+                      ],
                     ),
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return 'Bitte gebe dein Passwort an';
-                      }
-                      return null;
-                    },
                   ),
-                  if (provider.errormessage.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(provider.errormessage,
-                          style: GrootlyTextStyle.errorMessage),
-                    )
-                ],
+                  actions: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                          child: const Text(
+                            'Abbrechen',
+                            style: GrootlyTextStyle.body2,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        TextButton(
+                          child: const Text(
+                            'Login',
+                            style: GrootlyTextStyle.reauthenticate,
+                          ),
+                          onPressed: () {
+                            if (provider.formKey.currentState!.validate()) {
+                              provider.signInWithEmail().then((value) {
+                                Navigator.pop(context);
+                              }).catchError((error) {
+                                if (error is FirebaseAuthException) {
+                                  String errorMessage =
+                                      error.message.toString();
+                                  if (errorMessage.length > 80) {
+                                    provider.setErrorMessage(
+                                        'Oops, there was an error. Please try again.');
+                                  } else {
+                                    provider.setErrorMessage(errorMessage);
+                                  }
+                                } else {
+                                  provider.setErrorMessage(
+                                      'Error. Please try again.');
+                                }
+                              });
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-            actions: [
-              TextButton(
-                child: const Text(
-                  'Abbrechen',
-                  style: GrootlyTextStyle.body2,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              TextButton(
-                child: const Text(
-                  'Login',
-                  style: GrootlyTextStyle.reauthenticate,
-                ),
-                onPressed: () {
-                  if (provider.formKey.currentState!.validate()) {
-                    provider.signInWithEmail().then((value) {
-                      Navigator.pop(context);
-                    }).catchError((error) {
-                      if (error is FirebaseAuthException) {
-                        String errorMessage = error.message.toString();
-                        if (errorMessage.length > 80) {
-                          provider.setErrorMessage(
-                              'Oops, there was an error. Please try again.');
-                        } else {
-                          provider.setErrorMessage(errorMessage);
-                        }
-                      } else {
-                        provider.setErrorMessage('Error. Please try again.');
-                      }
-                    });
-                  }
-                },
-              ),
-            ],
           );
         });
       },

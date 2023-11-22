@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 
-const kTextInputTitleLight = TextStyle(
-    fontSize: 16, fontWeight: FontWeight.bold, color: GrootlyColor.white);
-
-const kTextInputLight = TextStyle(color: GrootlyColor.white, fontSize: 20);
-
-const kTextButtonLight = TextStyle(
-    fontSize: 18, fontWeight: FontWeight.bold, color: GrootlyColor.white);
-
-const kTextHeadline2 = TextStyle(
-    fontSize: 20, fontWeight: FontWeight.bold, color: GrootlyColor.white);
-
-const kTextBody = TextStyle(fontSize: 16, color: GrootlyColor.white);
-
 class GrootlyTextStyle {
   // Header regular
   static const TextStyle headlineR1 = TextStyle(
@@ -102,6 +89,12 @@ class GrootlyTextStyle {
       height: 1.4286,
       fontSize: 14,
       color: GrootlyColor.darkgreenText,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold);
+  static const TextStyle bodyB2l = TextStyle(
+      height: 1.4286,
+      fontSize: 14,
+      color: GrootlyColor.mediumgreen2,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);
 

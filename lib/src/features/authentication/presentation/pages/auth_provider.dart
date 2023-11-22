@@ -70,12 +70,6 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-// Reauthenticate with Password
-
-  Future<void> reauthenticate() async {
-    try {} catch (e) {}
-  }
-
 // Reset Password
 
   Future<void> resetPassword() async {

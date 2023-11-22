@@ -9,9 +9,10 @@ class RecipeModel {
   Map<String, String> ingredients;
   String title;
   List<String> utensils;
-  String servings;
+  int servings;
   String duration;
   String? restTime;
+  String subCategory;
 
   RecipeModel(
       {required this.recipeId,
@@ -26,7 +27,8 @@ class RecipeModel {
       required this.utensils,
       required this.servings,
       required this.duration,
-      required this.restTime});
+      required this.restTime,
+      required this.subCategory});
 
   factory RecipeModel.fromJson(Map<String, dynamic> json, String recipeId) {
     return RecipeModel(
@@ -42,6 +44,7 @@ class RecipeModel {
         cookDuration: json['cookDuration'],
         servings: json['servings'],
         duration: json['duration'],
-        restTime: json['restTime']);
+        restTime: json['restTime'],
+        subCategory: json['subcategory']);
   }
 }

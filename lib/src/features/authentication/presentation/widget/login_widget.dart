@@ -82,7 +82,7 @@ class LoginWidget extends StatelessWidget {
                       hintText: 'Email',
                     ),
                   ),
-                  SpacingH.l,
+                  SpacingH.m,
                   const Text(
                     'Passwort',
                     style: GrootlyTextStyle.body1,
