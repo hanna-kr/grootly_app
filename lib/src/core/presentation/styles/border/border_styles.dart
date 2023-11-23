@@ -5,4 +5,7 @@ class GrootlyBorderRadius {
 
   static const BorderRadius imageCard = BorderRadius.only(
       topLeft: Radius.circular(10), topRight: Radius.circular(10));
+
+  static const BorderRadius recipeSearch = BorderRadius.only(
+      topLeft: Radius.circular(10), bottomLeft: Radius.circular(10));
 }

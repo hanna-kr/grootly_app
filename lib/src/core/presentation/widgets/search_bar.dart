@@ -30,6 +30,13 @@ class CustomSearchBarState extends State<CustomSearchBar> {
     widget.onSearchChanged?.call(_searchController.text);
   }
 
+  void _handleClear() {
+    setState(() {
+      _searchController.clear();
+      widget.onSearchChanged?.call('');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,18 +59,19 @@ class CustomSearchBarState extends State<CustomSearchBar> {
           hintText: 'Suche...',
           hintStyle: GrootlyTextStyle.search,
           border: InputBorder.none,
-          suffixIcon: Material(
-            color: Colors.transparent,
-            child: IconButton(
-              splashRadius: 20,
-              icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
-                  color: GrootlyColor.mediumgrey),
-              onPressed: _handleSearch,
-            ),
-          ),
+          suffixIcon: _searchController.text.isEmpty
+              ? null
+              : IconButton(
+                  icon: const FaIcon(
+                    FontAwesomeIcons.xmark,
+                    color: GrootlyColor.mediumgrey,
+                    size: 20,
+                  ),
+                  onPressed: _handleClear,
+                ),
           contentPadding: PaddingAll.m,
         ),
-        style: GrootlyTextStyle.buttonSecond,
+        style: GrootlyTextStyle.search,
       ),
     );
   }

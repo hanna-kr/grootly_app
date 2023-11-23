@@ -36,6 +36,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
         await recipeService.addToFavorites(recipeId);
         userFavorites.add(recipeId);
       }
+      debugPrint('Updated Favorites: $userFavorites');
       setState(() {});
     } catch (e) {
       debugPrint('Error updating favorites: $e');

@@ -22,7 +22,7 @@ class RecipeService {
     DocumentSnapshot favoriteDoc =
         await _firestore.collection('favorites').doc(userId).get();
     if (favoriteDoc.exists) {
-      return List.from(favoriteDoc['recipes']);
+      return List.from(favoriteDoc['recipeId']);
     }
 
     return [];
@@ -82,6 +82,34 @@ class RecipeService {
       return snapshot.docs.map((doc) {
         return RecipeModel.fromJson(doc.data() as Map<String, dynamic>, doc.id);
       }).toList();
+    });
+  }
+
+  // Stream Function to get favorite recipes
+  Stream<List<RecipeModel>> getFavoritesStream() {
+    final uid = _auth.currentUser?.uid;
+    if (uid == null) {
+      throw Exception('User not logged in');
+    }
+    return _firestore
+        .collection('favorites')
+        .doc(uid)
+        .snapshots()
+        .asyncMap((favoriteDocSnapshot) async {
+      if (!favoriteDocSnapshot.exists) {
+        return [];
+      }
+      List<dynamic> favoriteIds = favoriteDocSnapshot.data()?['recipeId'] ?? [];
+      List<RecipeModel> favoriteRecipes = [];
+      for (String id in favoriteIds) {
+        DocumentSnapshot recipeSnapshot = await recipesCollection.doc(id).get();
+        if (recipeSnapshot.exists) {
+          favoriteRecipes.add(RecipeModel.fromJson(
+              recipeSnapshot.data() as Map<String, dynamic>,
+              recipeSnapshot.id));
+        }
+      }
+      return favoriteRecipes;
     });
   }
 }
