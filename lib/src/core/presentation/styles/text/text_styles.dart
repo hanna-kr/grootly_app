@@ -176,4 +176,12 @@ class GrootlyTextStyle {
       color: GrootlyColor.limegreen,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);
+
+// Searchbar
+
+  static const TextStyle search = TextStyle(
+      height: 1.375,
+      fontSize: 16,
+      color: GrootlyColor.mediumgrey,
+      fontFamily: 'Poppins');
 }

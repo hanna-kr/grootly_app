@@ -11,6 +11,7 @@ import 'package:grootly_app/src/features/recipes/presentation/screens/recipe_det
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipe_form.dart';
 import 'package:grootly_app/src/features/favourite/presentation/screens/favourite_screen.dart';
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipes_screen.dart';
+import 'package:grootly_app/src/features/search/presentation/screens/search_screen.dart';
 import 'package:grootly_app/src/features/settings/presentation/screens/settings_page.dart';
 import 'package:grootly_app/src/features/tips/presentation/screens/tip_details.dart';
 import 'package:grootly_app/src/features/tips/presentation/screens/tips_screen.dart';
@@ -43,7 +44,8 @@ class GrootlyApp extends StatelessWidget {
           '/forgot_password': (context) => const PasswordForgottenPage(),
           '/home': (context) => const HomePage(),
           '/recipes': (context) => const RecipeScreen(),
-          '/search': (context) => const FavouriteScreen(),
+          '/favorites': (context) => const FavouriteScreen(),
+          '/search': (context) => const SearchScreen(),
           '/tips': (context) => const TipsScreen(),
           '/profile': (context) => const ProfilePage(),
           '/settings': (context) => const SettingsPage(),

@@ -28,7 +28,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: GrootlyColor.white,
       appBar: CustomAppBar(
-        title: 'Welcome back',
         trailingIcon: Icons.person,
         onTrailingPressed: () {
           Navigator.pushNamed(context, '/profile');
@@ -40,8 +39,15 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SearchBar(),
-            SpacingH.m,
+            Text(
+              'Hallo, Öko-Foodie!',
+              style: GrootlyTextStyle.headlineB2,
+            ),
+            Text(
+              'Bereit für eine Prise Grün auf deinem Teller?',
+              style: GrootlyTextStyle.body2,
+            ),
+            SpacingH.l,
             FutureBuilder(
               future: tipsService.getAllTipsFuture(),
               builder: (context, snapshot) {

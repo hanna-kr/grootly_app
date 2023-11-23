@@ -6,6 +6,7 @@ import 'package:grootly_app/src/features/favourite/presentation/screens/favourit
 import 'package:grootly_app/src/features/home/presentation/home_provider.dart';
 import 'package:grootly_app/src/features/home/presentation/home_screen.dart';
 import 'package:grootly_app/src/features/recipes/presentation/screens/recipes_screen.dart';
+import 'package:grootly_app/src/features/search/presentation/screens/search_screen.dart';
 import 'package:grootly_app/src/features/tips/presentation/screens/tips_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<Widget> screens = [
       const HomeScreen(),
+      const SearchScreen(),
       const RecipeScreen(),
       const TipsScreen(),
       const FavouriteScreen(),
@@ -34,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           selectedItemColor: GrootlyColor.white,
           unselectedItemColor: GrootlyColor.lightgrey,
           iconSize: 24,
-          selectedFontSize: 14,
+          selectedFontSize: 13,
           unselectedFontSize: 12,
           showSelectedLabels: true,
           showUnselectedLabels: true,
@@ -42,6 +44,8 @@ class _HomePageState extends State<HomePage> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.houseChimney), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: FaIcon(FontAwesomeIcons.magnifyingGlass), label: 'Suche'),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.utensils), label: 'Rezepte'),
             BottomNavigationBarItem(

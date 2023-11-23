@@ -100,12 +100,11 @@ class _TipBigCardState extends State<TipBigCard> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: PaddingCard.tips,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(widget.tips.title, style: GrootlyTextStyle.headlineB4),
-                    const SizedBox(height: 5.0),
                     Text(
                       widget.tips.subtitle,
                       style: GrootlyTextStyle.body2,

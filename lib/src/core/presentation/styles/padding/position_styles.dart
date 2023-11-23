@@ -18,3 +18,8 @@ class PaddingVer {
   static const EdgeInsets m = EdgeInsets.symmetric(vertical: 16.0);
   static const EdgeInsets l = EdgeInsets.symmetric(vertical: 20.0);
 }
+
+class PaddingCard {
+  static const EdgeInsets tips =
+      EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 12);
+}
