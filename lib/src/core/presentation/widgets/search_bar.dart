@@ -14,10 +14,10 @@ class CustomSearchBar extends StatefulWidget {
   });
 
   @override
-  _CustomSearchBarState createState() => _CustomSearchBarState();
+  CustomSearchBarState createState() => CustomSearchBarState();
 }
 
-class _CustomSearchBarState extends State<CustomSearchBar> {
+class CustomSearchBarState extends State<CustomSearchBar> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -34,7 +34,6 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        // Assuming `GrootlyColor`, `GrootlyBorderRadius`, etc. are valid constants.
         color: GrootlyColor.white,
         borderRadius: GrootlyBorderRadius.medium,
         border: Border.all(
@@ -44,8 +43,9 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
       child: TextField(
         controller: _searchController,
         onChanged: (String value) {
-          setState(() {}); // Update the UI when the text changes
-          widget.onSearchChanged?.call(value);
+          setState(() {
+            widget.onSearchChanged?.call(value);
+          });
         },
         onSubmitted: (_) => _handleSearch(),
         decoration: InputDecoration(
@@ -55,7 +55,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           suffixIcon: Material(
             color: Colors.transparent,
             child: IconButton(
-              icon: FaIcon(FontAwesomeIcons.magnifyingGlass,
+              icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
                   color: GrootlyColor.mediumgrey),
               onPressed: _handleSearch,
             ),
