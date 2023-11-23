@@ -39,11 +39,11 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Hallo, Öko-Foodie!',
               style: GrootlyTextStyle.headlineB2,
             ),
-            Text(
+            const Text(
               'Bereit für eine Prise Grün auf deinem Teller?',
               style: GrootlyTextStyle.body2,
             ),

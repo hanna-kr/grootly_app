@@ -55,6 +55,7 @@ class CustomSearchBarState extends State<CustomSearchBar> {
           suffixIcon: Material(
             color: Colors.transparent,
             child: IconButton(
+              splashRadius: 20,
               icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
                   color: GrootlyColor.mediumgrey),
               onPressed: _handleSearch,
