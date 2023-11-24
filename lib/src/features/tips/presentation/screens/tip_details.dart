@@ -33,7 +33,7 @@ class TipDetailsPage extends StatelessWidget {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final Tips tips = arguments['tips'];
-    final String heroTag = arguments['heroTag'];
+    final String heroTag = arguments['heroTag1'];
 
     return Scaffold(
       backgroundColor: GrootlyColor.white,

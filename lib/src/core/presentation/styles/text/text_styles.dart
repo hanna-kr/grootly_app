@@ -44,7 +44,7 @@ class GrootlyTextStyle {
       fontWeight: FontWeight.bold);
   static const TextStyle headlineB3 = TextStyle(
       height: 1.2,
-      fontSize: 20,
+      fontSize: 18,
       color: GrootlyColor.darkgreenText,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);

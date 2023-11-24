@@ -14,11 +14,11 @@ class RecipeSmallCard extends StatefulWidget {
   final Function(String) onFavoritePressed;
 
   const RecipeSmallCard({
-    super.key,
+    Key? key,
     required this.recipe,
     required this.isFavorite,
     required this.onFavoritePressed,
-  });
+  }) : super(key: key);
 
   @override
   State<RecipeSmallCard> createState() => _RecipeSmallCardState();
@@ -34,6 +34,8 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
 
   @override
   Widget build(BuildContext context) {
+    final heroTag = UniqueKey().toString();
+
     return Card(
       elevation: 0,
       color: GrootlyColor.lightgrey2,
@@ -58,12 +60,11 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
                     ClipRRect(
                       borderRadius: GrootlyBorderRadius.imageCard,
                       child: Hero(
-                        tag: widget.recipe.imgURL,
+                        tag: heroTag,
                         child: CachedNetworkImage(
                           width: double.infinity,
                           imageUrl: widget.recipe.imgURL,
                           fit: BoxFit.cover,
-                          // Shimmer
                           placeholder: (context, url) => Shimmer.fromColors(
                             baseColor: GrootlyColor.lightgrey,
                             highlightColor: GrootlyColor.lightgrey2,
@@ -75,7 +76,6 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
                               ),
                             ),
                           ),
-                          // Error when Image failure
                           errorWidget: (context, url, error) => const Icon(
                             Icons.error,
                             size: 30,
@@ -116,9 +116,18 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
                 flex: 2,
                 child: Padding(
                   padding: PaddingAll.s,
-                  child: Text(
-                    widget.recipe.title,
-                    style: GrootlyTextStyle.bodyB2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.recipe.title,
+                        style: GrootlyTextStyle.bodyB2,
+                      ),
+                      Text(
+                        widget.recipe.duration,
+                        style: GrootlyTextStyle.body3,
+                      ),
+                    ],
                   ),
                 ),
               ),

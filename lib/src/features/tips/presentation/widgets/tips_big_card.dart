@@ -26,7 +26,7 @@ class TipBigCard extends StatefulWidget {
 class _TipBigCardState extends State<TipBigCard> {
   void navigateToTipDetail() {
     Navigator.pushNamed(context, '/tip_details',
-        arguments: {'tips': widget.tips, 'heroTag': widget.tips.imgURL});
+        arguments: {'tips': widget.tips, 'heroTag1': widget.tips.imgURL});
   }
 
   @override

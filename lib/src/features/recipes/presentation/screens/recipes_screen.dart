@@ -95,7 +95,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
               );
             } else {
               return const Center(
-                child: Text('No recipes found'),
+                child: Text('Keine Rezepte gefunden'),
               );
             }
           },
