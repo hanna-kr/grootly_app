@@ -44,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
         },
       ),
       body: Padding(
-        padding: PaddingAll.l,
+        padding: PaddingAll.m,
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

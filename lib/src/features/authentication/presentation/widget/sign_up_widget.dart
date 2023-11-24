@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -51,7 +53,7 @@ class SignUpWidget extends StatelessWidget {
     }
 
     return Padding(
-      padding: PaddingAll.l,
+      padding: PaddingAll.m,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Consumer<AuthProvider>(builder: (context, provider, _) {
@@ -155,18 +157,21 @@ class SignUpWidget extends StatelessWidget {
                     SpacingH.l,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: <Widget>[
                         SquareSecondaryButton(
-                            onPressed: () {
-                              signInWithGoogleAndHandleErrors();
-                            },
-                            imagePath: 'assets/images/example/googlelogo.png'),
-                        SpacingW.l,
-                        SquareSecondaryButton(
+                          onPressed: () {
+                            signInWithGoogleAndHandleErrors();
+                          },
+                          imagePath: 'assets/images/example/googlelogo.png',
+                        ),
+                        if (!Platform.isAndroid) SpacingW.l,
+                        if (!Platform.isAndroid)
+                          SquareSecondaryButton(
                             onPressed: () {
                               authService.signInWithApple();
                             },
-                            imagePath: 'assets/images/example/apple-logo.png'),
+                            imagePath: 'assets/images/example/apple-logo.png',
+                          ),
                       ],
                     )
                   ],

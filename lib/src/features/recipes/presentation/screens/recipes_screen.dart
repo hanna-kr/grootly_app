@@ -61,7 +61,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
         title: 'Rezepte',
       ),
       body: Padding(
-        padding: PaddingAll.l,
+        padding: PaddingAll.m,
         child: StreamBuilder<List<RecipeModel>>(
           stream: recipeService.getAllRecipesStream(),
           builder: (context, snapshot) {

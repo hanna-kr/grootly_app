@@ -43,7 +43,7 @@ class SettingsPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: PaddingAll.l,
+          padding: PaddingAll.m,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

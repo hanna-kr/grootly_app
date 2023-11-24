@@ -46,23 +46,20 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
         borderRadius: GrootlyBorderRadius.medium,
         child: InkWell(
           borderRadius: GrootlyBorderRadius.medium,
-          onTap: () {
-            navigateToRecipeDetail();
-          },
-          child: Container(
-            color: GrootlyColor.lightgrey2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Stack(
+          onTap: navigateToRecipeDetail,
+          child: Flex(
+            direction: Axis.vertical,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Stack(
                   children: [
-                    // Image
                     ClipRRect(
                       borderRadius: GrootlyBorderRadius.imageCard,
                       child: Hero(
                         tag: widget.recipe.imgURL,
                         child: CachedNetworkImage(
-                          height: 96,
                           width: double.infinity,
                           imageUrl: widget.recipe.imgURL,
                           fit: BoxFit.cover,
@@ -71,16 +68,14 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
                             baseColor: GrootlyColor.lightgrey,
                             highlightColor: GrootlyColor.lightgrey2,
                             child: Container(
-                              height: 90,
                               width: double.infinity,
-                              clipBehavior: Clip.hardEdge,
                               decoration: const BoxDecoration(
                                 borderRadius: GrootlyBorderRadius.medium,
                                 color: GrootlyColor.lightgrey2,
                               ),
                             ),
                           ),
-                          // Error when Imagefailure
+                          // Error when Image failure
                           errorWidget: (context, url, error) => const Icon(
                             Icons.error,
                             size: 30,
@@ -89,7 +84,6 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
                         ),
                       ),
                     ),
-                    // Label top right
                     Positioned(
                       top: 10.0,
                       right: 10.0,
@@ -117,15 +111,18 @@ class _RecipeSmallCardState extends State<RecipeSmallCard> {
                     ),
                   ],
                 ),
-                Padding(
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
                   padding: PaddingAll.s,
                   child: Text(
                     widget.recipe.title,
                     style: GrootlyTextStyle.bodyB2,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

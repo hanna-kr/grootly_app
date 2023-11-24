@@ -5,6 +5,7 @@ import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/textfield_deco/textfield_deco.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
+import 'package:grootly_app/src/core/presentation/widgets/primary_button.dart';
 import 'package:grootly_app/src/features/recipes/presentation/widgets/category_list.dart';
 import 'package:grootly_app/src/features/recipes/presentation/widgets/recipe_image_picker.dart';
 
@@ -52,7 +53,7 @@ class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        padding: PaddingAll.l,
+        padding: PaddingAll.m,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -64,7 +65,6 @@ class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
             TextField(
               controller: _recipeController,
               decoration: kTextFieldDecoration.copyWith(
-                labelText: 'Titel',
                 hintText: 'Titel',
               ),
             ),
@@ -128,7 +128,6 @@ class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
             TextField(
               controller: _descriptionController,
               decoration: kTextFieldDecoration.copyWith(
-                labelText: 'Beschreibung',
                 hintText: 'Beschreibung',
               ),
             ),
@@ -141,10 +140,11 @@ class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
             TextField(
               controller: _utensilController,
               decoration: kTextFieldDecoration.copyWith(
-                labelText: 'Utensilien',
                 hintText: 'Utensilien',
               ),
             ),
+            SpacingH.l,
+            PrimaryButton(text: 'Speichern', onPressed: () {})
           ],
         ),
       ),

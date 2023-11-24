@@ -51,7 +51,7 @@ class TipDetailsPage extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 Padding(
-                  padding: PaddingAll.l,
+                  padding: PaddingAll.m,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

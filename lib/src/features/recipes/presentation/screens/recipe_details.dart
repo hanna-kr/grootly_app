@@ -73,7 +73,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
             delegate: SliverChildListDelegate(
               [
                 Padding(
-                  padding: PaddingAll.l,
+                  padding: PaddingAll.m,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

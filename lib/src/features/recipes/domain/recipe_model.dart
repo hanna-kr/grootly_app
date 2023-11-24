@@ -47,4 +47,22 @@ class RecipeModel {
         restTime: json['restTime'],
         subCategory: json['subcategory']);
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'recipeId': recipeId,
+      'category': category,
+      'description': description,
+      'difficulty': difficulty,
+      'prepDuration': prepDuration,
+      'cookDuration': cookDuration,
+      'imgURL': imgURL,
+      'ingredients': ingredients,
+      'title': title,
+      'utensils': utensils,
+      'servings': servings,
+      'duration': duration,
+      'restTime': restTime ?? '',
+      'subCategory': subCategory,
+    };
+  }
 }

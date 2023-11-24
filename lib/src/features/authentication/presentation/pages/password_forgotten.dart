@@ -18,7 +18,7 @@ class PasswordForgottenPage extends StatelessWidget {
         },
       ),
       body: const Padding(
-        padding: PaddingAll.l,
+        padding: PaddingAll.m,
         child: ForgotPasswordWidget(),
       ),
     );

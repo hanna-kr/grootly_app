@@ -14,7 +14,7 @@ class ReauthenticationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: PaddingAll.l,
+      padding: PaddingAll.m,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Consumer<AuthProvider>(builder: (context, provider, child) {

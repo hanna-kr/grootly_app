@@ -71,7 +71,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           child: Scaffold(
             backgroundColor: GrootlyColor.white,
             body: Padding(
-                padding: PaddingAll.l,
+                padding: PaddingAll.m,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

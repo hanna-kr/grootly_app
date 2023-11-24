@@ -58,7 +58,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         title: 'Favoriten',
       ),
       body: Padding(
-        padding: PaddingAll.l,
+        padding: PaddingAll.m,
         child: StreamBuilder<List<RecipeModel>>(
           stream: recipeService.getFavoritesStream(),
           builder: (BuildContext context,

@@ -6,6 +6,7 @@ import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart'
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
 import 'package:grootly_app/src/features/recipes/domain/recipe_model.dart';
+import 'package:shimmer/shimmer.dart';
 
 class RecipeSearchCard extends StatefulWidget {
   final RecipeModel recipe;
@@ -54,10 +55,29 @@ class _RecipeSearchCardState extends State<RecipeSearchCard> {
                     child: Hero(
                       tag: widget.recipe.imgURL,
                       child: CachedNetworkImage(
-                        width: 80,
-                        height: 80,
+                        width: 90,
+                        height: 90,
                         imageUrl: widget.recipe.imgURL,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.cover, // Shimmer
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: GrootlyColor.lightgrey,
+                          highlightColor: GrootlyColor.lightgrey2,
+                          child: Container(
+                            height: 80,
+                            width: double.infinity,
+                            clipBehavior: Clip.hardEdge,
+                            decoration: const BoxDecoration(
+                              borderRadius: GrootlyBorderRadius.medium,
+                              color: GrootlyColor.lightgrey2,
+                            ),
+                          ),
+                        ),
+                        // Error when Imagefailure
+                        errorWidget: (context, url, error) => const Icon(
+                          Icons.error,
+                          size: 30,
+                          color: GrootlyColor.red,
+                        ),
                       ),
                     ),
                   ),
@@ -79,7 +99,7 @@ class _RecipeSearchCardState extends State<RecipeSearchCard> {
                         ),
                         Text(
                           widget.recipe.subCategory,
-                          style: GrootlyTextStyle.body3,
+                          style: GrootlyTextStyle.body2,
                         )
                       ],
                     ),

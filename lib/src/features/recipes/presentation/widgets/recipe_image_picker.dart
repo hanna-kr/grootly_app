@@ -67,7 +67,7 @@ class _CustomImagePickerRecipeState extends State<CustomImagePickerRecipe> {
                   ),
                   content: SingleChildScrollView(
                     child: Padding(
-                      padding: PaddingAll.l,
+                      padding: PaddingAll.m,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[

@@ -75,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: GrootlyColor.white,
       appBar: const CustomAppBar(title: 'Suche'),
       body: SingleChildScrollView(
-        padding: PaddingAll.l,
+        padding: PaddingAll.m,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,

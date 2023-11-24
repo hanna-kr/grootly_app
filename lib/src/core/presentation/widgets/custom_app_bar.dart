@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingHor.m,
+      padding: PaddingHor.s,
       child: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
