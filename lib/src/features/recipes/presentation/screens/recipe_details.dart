@@ -55,7 +55,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final RecipeModel recipes = arguments['recipes'];
-    final String heroTag = arguments['heroTag2'];
+    final String heroTag = arguments['heroTag'];
 
     return Scaffold(
       backgroundColor: GrootlyColor.white,

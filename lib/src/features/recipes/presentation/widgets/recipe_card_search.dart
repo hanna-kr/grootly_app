@@ -25,11 +25,10 @@ class RecipeSearchCard extends StatefulWidget {
 }
 
 class _RecipeSearchCardState extends State<RecipeSearchCard> {
+  final heroTag = UniqueKey().toString();
   void navigateToRecipeDetail() {
-    Navigator.pushNamed(context, '/recipe_details', arguments: {
-      'recipes': widget.recipe,
-      'heroTag2': widget.recipe.imgURL
-    });
+    Navigator.pushNamed(context, '/recipe_details',
+        arguments: {'recipes': widget.recipe, 'heroTag': heroTag});
   }
 
   @override
@@ -53,7 +52,7 @@ class _RecipeSearchCardState extends State<RecipeSearchCard> {
                   child: ClipRRect(
                     borderRadius: GrootlyBorderRadius.recipeSearch,
                     child: Hero(
-                      tag: widget.recipe.imgURL,
+                      tag: heroTag,
                       child: CachedNetworkImage(
                         width: 90,
                         height: 90,

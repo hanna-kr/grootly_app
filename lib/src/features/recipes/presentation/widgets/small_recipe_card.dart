@@ -25,17 +25,14 @@ class RecipeSmallCard extends StatefulWidget {
 }
 
 class _RecipeSmallCardState extends State<RecipeSmallCard> {
+  final heroTag = UniqueKey().toString();
   void navigateToRecipeDetail() {
-    Navigator.pushNamed(context, '/recipe_details', arguments: {
-      'recipes': widget.recipe,
-      'heroTag2': widget.recipe.imgURL
-    });
+    Navigator.pushNamed(context, '/recipe_details',
+        arguments: {'recipes': widget.recipe, 'heroTag': heroTag});
   }
 
   @override
   Widget build(BuildContext context) {
-    final heroTag = UniqueKey().toString();
-
     return Card(
       elevation: 0,
       color: GrootlyColor.lightgrey2,
