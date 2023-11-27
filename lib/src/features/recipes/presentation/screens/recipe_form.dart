@@ -4,11 +4,7 @@ import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart'
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
 import 'package:grootly_app/src/core/presentation/styles/text/text_styles.dart';
-import 'package:grootly_app/src/core/presentation/styles/textfield_deco/textfield_deco.dart';
 import 'package:grootly_app/src/core/presentation/widgets/custom_app_bar.dart';
-import 'package:grootly_app/src/core/presentation/widgets/primary_button.dart';
-import 'package:grootly_app/src/features/recipes/presentation/widgets/category_list.dart';
-import 'package:grootly_app/src/features/recipes/presentation/widgets/recipe_image_picker.dart';
 
 class RecipeCreatorPage extends StatefulWidget {
   const RecipeCreatorPage({super.key});

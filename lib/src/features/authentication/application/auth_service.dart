@@ -113,6 +113,7 @@ class AuthService {
 // Apple Login
 
   String generateNonce([int length = 32]) {
+    // ignore: prefer_const_declarations
     final charset =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final random = Random.secure();

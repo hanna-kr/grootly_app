@@ -12,8 +12,8 @@ class AuthProvider extends ChangeNotifier {
   final TextEditingController _nameController = TextEditingController();
 
   bool _passwordVisible = false;
-  bool _isEmailVerified = false;
-  bool _canResendEmail = false;
+  final bool _isEmailVerified = false;
+  final bool _canResendEmail = false;
   bool _isLogin = false;
 
   String _errormessage = '';

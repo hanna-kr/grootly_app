@@ -7,10 +7,10 @@ class CategoryList extends StatefulWidget {
   const CategoryList({super.key, required this.selectedCategories});
 
   @override
-  _CategoryListState createState() => _CategoryListState();
+  CategoryListState createState() => CategoryListState();
 }
 
-class _CategoryListState extends State<CategoryList> {
+class CategoryListState extends State<CategoryList> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
