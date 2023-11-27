@@ -122,11 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SpacingH.l,
             const Text(
-              'Saisonale Rezepte',
-              style: GrootlyTextStyle.headlineB3,
-            ),
-            SpacingH.l,
-            const Text(
               'Deine Favoriten',
               style: GrootlyTextStyle.headlineB3,
             ),
@@ -182,6 +177,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            SpacingH.l,
+            const Text(
+              'Saisonale Rezepte',
+              style: GrootlyTextStyle.headlineB3,
+            ),
+            SpacingH.l,
+            const Center(
+                child: Text(
+              'Noch in Bearbeitung ...',
+              style: GrootlyTextStyle.body2,
+            ))
           ],
         ),
       ),

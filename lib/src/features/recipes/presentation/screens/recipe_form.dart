@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
 import 'package:grootly_app/src/core/presentation/styles/spacing/spacing.dart';
@@ -51,100 +52,116 @@ class _RecipeCreatorPageState extends State<RecipeCreatorPage> {
           Navigator.pop(context);
         },
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+      body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         padding: PaddingAll.m,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Titel',
-              style: GrootlyTextStyle.headlineB4,
-            ),
-            SpacingH.s,
-            TextField(
-              controller: _recipeController,
-              decoration: kTextFieldDecoration.copyWith(
-                hintText: 'Titel',
-              ),
-            ),
-            SpacingH.m,
-            const Text(
-              'Bild',
-              style: GrootlyTextStyle.headlineB4,
-            ),
-            SpacingH.s,
             Center(
-              child: CustomImagePickerRecipe(setImage: setRecipeImagePath),
-            ),
-            SpacingH.m,
-            const Text(
-              'Schwierigkeitsgrad',
-              style: GrootlyTextStyle.headlineB4,
-            ),
-            SpacingH.s,
-            Column(
-              children: [
-                RadioListTile(
-                  value: 'leicht',
-                  groupValue: selectedDifficulty,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDifficulty = value.toString();
-                    });
-                  },
-                  title: const Text('leicht'),
-                ),
-                RadioListTile(
-                  value: 'mittel',
-                  groupValue: selectedDifficulty,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDifficulty = value.toString();
-                    });
-                  },
-                  title: const Text('mittel'),
-                ),
-                RadioListTile(
-                  value: 'schwer',
-                  groupValue: selectedDifficulty,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDifficulty = value.toString();
-                    });
-                  },
-                  title: const Text('schwer'),
-                ),
-              ],
-            ),
-            SpacingH.m,
-            CategoryList(selectedCategories: selectedCategories),
-            SpacingH.m,
-            const Text(
-              'Beschreibung',
-              style: GrootlyTextStyle.headlineB4,
-            ),
-            SpacingH.s,
-            TextField(
-              controller: _descriptionController,
-              decoration: kTextFieldDecoration.copyWith(
-                hintText: 'Beschreibung',
+              child: Column(
+                children: [
+                  FaIcon(
+                    FontAwesomeIcons.hammer,
+                    color: GrootlyColor.limegreen,
+                    size: 50,
+                  ),
+                  SpacingH.l,
+                  Text(
+                    'Noch in Bearbeitung ...',
+                    style: GrootlyTextStyle.body2,
+                  ),
+                ],
               ),
-            ),
-            SpacingH.m,
-            const Text(
-              'Utensilien',
-              style: GrootlyTextStyle.headlineB4,
-            ),
-            SpacingH.s,
-            TextField(
-              controller: _utensilController,
-              decoration: kTextFieldDecoration.copyWith(
-                hintText: 'Utensilien',
-              ),
-            ),
-            SpacingH.l,
-            PrimaryButton(text: 'Speichern', onPressed: () {})
+            )
+            // const Text(
+            //   'Titel',
+            //   style: GrootlyTextStyle.headlineB4,
+            // ),
+            // SpacingH.s,
+            // TextField(
+            //   controller: _recipeController,
+            //   decoration: kTextFieldDecoration.copyWith(
+            //     hintText: 'Titel',
+            //   ),
+            // ),
+            // SpacingH.m,
+            // const Text(
+            //   'Bild',
+            //   style: GrootlyTextStyle.headlineB4,
+            // ),
+            // SpacingH.s,
+            // Center(
+            //   child: CustomImagePickerRecipe(setImage: setRecipeImagePath),
+            // ),
+            // SpacingH.m,
+            // const Text(
+            //   'Schwierigkeitsgrad',
+            //   style: GrootlyTextStyle.headlineB4,
+            // ),
+            // SpacingH.s,
+            // Column(
+            //   children: [
+            //     RadioListTile(
+            //       value: 'leicht',
+            //       groupValue: selectedDifficulty,
+            //       onChanged: (value) {
+            //         setState(() {
+            //           selectedDifficulty = value.toString();
+            //         });
+            //       },
+            //       title: const Text('leicht'),
+            //     ),
+            //     RadioListTile(
+            //       value: 'mittel',
+            //       groupValue: selectedDifficulty,
+            //       onChanged: (value) {
+            //         setState(() {
+            //           selectedDifficulty = value.toString();
+            //         });
+            //       },
+            //       title: const Text('mittel'),
+            //     ),
+            //     RadioListTile(
+            //       value: 'schwer',
+            //       groupValue: selectedDifficulty,
+            //       onChanged: (value) {
+            //         setState(() {
+            //           selectedDifficulty = value.toString();
+            //         });
+            //       },
+            //       title: const Text('schwer'),
+            //     ),
+            //   ],
+            // ),
+            // SpacingH.m,
+            // CategoryList(selectedCategories: selectedCategories),
+            // SpacingH.m,
+            // const Text(
+            //   'Beschreibung',
+            //   style: GrootlyTextStyle.headlineB4,
+            // ),
+            // SpacingH.s,
+            // TextField(
+            //   controller: _descriptionController,
+            //   decoration: kTextFieldDecoration.copyWith(
+            //     hintText: 'Beschreibung',
+            //   ),
+            // ),
+            // SpacingH.m,
+            // const Text(
+            //   'Utensilien',
+            //   style: GrootlyTextStyle.headlineB4,
+            // ),
+            // SpacingH.s,
+            // TextField(
+            //   controller: _utensilController,
+            //   decoration: kTextFieldDecoration.copyWith(
+            //     hintText: 'Utensilien',
+            //   ),
+            // ),
+            // SpacingH.l,
+            // PrimaryButton(text: 'Speichern', onPressed: () {})
           ],
         ),
       ),
