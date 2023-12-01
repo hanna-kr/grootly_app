@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void deleteUserAccountAndNavigate(BuildContext context) async {
     try {
       AuthService authService = AuthService();
-      await authService.deleteUserAccount().then(
+      await authService.deleteUserAccountAndData().then(
           (value) => Navigator.of(context).popUntil((route) => route.isFirst));
     } on FirebaseAuthException {
       // ignore: use_build_context_synchronously

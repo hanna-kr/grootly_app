@@ -29,7 +29,7 @@ dependencies:
   cached_network_image: ^3.3.0
   shimmer: ^3.0.0
   email_validator: ^2.1.17
-  google_sign_in: ^6.1.5
+  google_sign_in: ^6.1.6
   sign_in_with_apple: ^5.0.0
   crypto: ^3.0.3
   carousel_slider: ^4.2.1

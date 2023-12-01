@@ -65,19 +65,37 @@ class AuthService {
     }
   }
 
-  // Delete
+  // Delete User and UserData
 
-  Future<void> deleteUserAccount() async {
+  Future<void> deleteUserAccountAndData() async {
     try {
-      await FirebaseAuth.instance.currentUser!.delete();
+      // Getting the current user's UID
+      final user = FirebaseAuth.instance.currentUser;
+      final uid = user?.uid;
+
+      // Check if the user is not null
+      if (uid == null) throw Exception('User not logged in.');
+
+      // Delete the favorites document first
+      await FirebaseFirestore.instance
+          .collection('favorites')
+          .doc(uid)
+          .delete();
+
+      // Now, delete the user's account
+      await user!.delete();
     } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
+
+      // If requires re-authentication, handle it appropriately
       if (e.code == "requires-recent-login") {
         await _reauthenticateAndDelete();
       } else {
-        debugPrint(e.toString());
+        debugPrint(e.message ?? "An error occurred while deleting user data.");
       }
     } catch (e) {
+      // Handle any other errors that might occur
+      debugPrint('Failed to delete user data: $e');
       rethrow;
     }
   }
