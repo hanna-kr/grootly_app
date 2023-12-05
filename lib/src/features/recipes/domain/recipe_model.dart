@@ -3,8 +3,8 @@ class RecipeModel {
   List<String> category;
   List<String> description;
   String difficulty;
-  String prepDuration;
-  String cookDuration;
+  String? prepDuration;
+  String? cookDuration;
   String imgURL;
   Map<String, String> ingredients;
   String title;
