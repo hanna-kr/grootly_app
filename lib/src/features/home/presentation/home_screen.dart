@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grootly_app/src/core/presentation/styles/color/color_style.dart';
 import 'package:grootly_app/src/core/presentation/styles/padding/position_styles.dart';
@@ -183,11 +184,53 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GrootlyTextStyle.headlineB3,
             ),
             SpacingH.l,
-            const Center(
-                child: Text(
-              'Noch in Bearbeitung ...',
-              style: GrootlyTextStyle.body2,
-            ))
+            StreamBuilder<List<RecipeModel>>(
+              stream: recipeService.getSeasonalRecipesStream(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<RecipeModel>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: GrootlyColor.primary,
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'Keine saisonalen Rezepte verfügbar.',
+                      style: GrootlyTextStyle.body2,
+                    ),
+                  );
+                } else {
+                  var seasonalRecipes = snapshot.data!;
+                  return CarouselSlider.builder(
+                    itemCount: seasonalRecipes.length,
+                    itemBuilder: (BuildContext context, int itemIndex,
+                        int pageViewIndex) {
+                      RecipeModel recipe = seasonalRecipes[itemIndex];
+                      return RecipeSmallCard(
+                        recipe: recipe,
+                        isFavorite: userFavorites.contains(recipe.recipeId),
+                        onFavoritePressed: _handleFavoritesListChanged,
+                      );
+                    },
+                    options: CarouselOptions(
+                      height: 208,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.55,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: false,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  );
+                }
+              },
+            ),
           ],
         ),
       ),

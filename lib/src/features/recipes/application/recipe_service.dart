@@ -113,5 +113,32 @@ class RecipeService {
     });
   }
 
-  // Delete UserData eg Favorites
+  // Helper function to determine the current seasons based on months
+  List<String> _getCurrentSeasonCategories() {
+    var now = DateTime.now();
+    var month = now.month;
+
+    if (month >= 10 || month <= 2) {
+      return ['Winter', 'Herbst'];
+    } else if (month >= 3 && month <= 5) {
+      return ['Frühling'];
+    } else if (month >= 6 && month <= 9) {
+      return ['Sommer'];
+    }
+    return [];
+  }
+
+  // Stream Function to get seasonal recipes
+  Stream<List<RecipeModel>> getSeasonalRecipesStream() {
+    var currentSeasonCategories = _getCurrentSeasonCategories();
+
+    return _firestore.collection('recipes').snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return RecipeModel.fromJson(doc.data(), doc.id);
+      }).where((recipe) {
+        return recipe.category
+            .any((category) => currentSeasonCategories.contains(category));
+      }).toList();
+    });
+  }
 }
