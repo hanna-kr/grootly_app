@@ -82,19 +82,18 @@ class AuthService {
           .doc(uid)
           .delete();
 
-      // Now, delete the user's account
+      // Delete the user's account
       await user!.delete();
     } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
 
-      // If requires re-authentication, handle it appropriately
+      // If requires re-authentication
       if (e.code == "requires-recent-login") {
         await _reauthenticateAndDelete();
       } else {
         debugPrint(e.message ?? "An error occurred while deleting user data.");
       }
     } catch (e) {
-      // Handle any other errors that might occur
       debugPrint('Failed to delete user data: $e');
       rethrow;
     }
